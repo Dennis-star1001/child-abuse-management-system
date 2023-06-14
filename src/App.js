@@ -11,7 +11,7 @@ function App() {
     <div>
     <Router>
       <Navbar/>
-        <div className='p-5 bg-dark ' >
+        <div className='p-2 bg-dark ' >
           <Routes>
             <Route path='/'  element={<Dashboard />} />
             <Route path='abuse'  element={<AbuseReport />} />
