@@ -1,157 +1,269 @@
-import { Fragment } from 'react'
-import { Disclosure, Menu, Transition } from '@headlessui/react'
-import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
-import { Link } from 'react-router-dom'
+import React, { ReactNode } from 'react';
+import {
+  IconButton,
+  Avatar,
+  Box,
+  CloseButton,
+  Flex,
+  HStack,
+  VStack,
+  Icon,
+  useColorModeValue,
+  Drawer,
+  DrawerContent,
+  Text,
+  useDisclosure,
+  BoxProps,
+  FlexProps,
+  Menu,
+  MenuButton,
+  MenuDivider,
+  MenuItem,
+  MenuList,
+  Image,
+  useStyleConfig,
+  color,
+} from '@chakra-ui/react';
+import {
+  FiHome,
+  FiTrendingUp,
+  FiCompass,
+  FiStar,
+  FiSettings,
+  FiMenu,
+  FiBell,
+  FiChevronDown,
+} from 'react-icons/fi';
+import { AiOutlineAppstore } from 'react-icons/ai'
+import { HiOutlineViewList } from 'react-icons/hi'
+import { MdOutlineCases, MdReceiptLong, MdOutlineReceipt, MdOutlinePeopleAlt } from 'react-icons/md'
+import { GrNotes } from 'react-icons/gr';
+import { BiBarChartSquare } from 'react-icons/bi';
+import { ReactText } from 'react';
 
-const navigation = [
-  { name: 'Dashboard', href: '/', current: true },
-  { name: 'Children', href: 'children', current: false },
-  { name: 'Abuse', href: 'abuse', current: false },
-  { name: 'Report', href: '/', current: false },
-]
+import { Link, NavLink, useLocation } from 'react-router-dom';
 
-function classNames(...classes) {
-  return classes.filter(Boolean).join(' ')
-}
+const LinkItems = [
+  { name: 'Dashboard', icon: AiOutlineAppstore, destination: './dashboard' },
+  { name: 'Children', icon: MdOutlineReceipt, destination: './children' },
+  { name: 'Abuse', icon: MdOutlinePeopleAlt, destination: './abuse' },
+  { name: 'Report', icon: MdOutlineCases, destination: './report' },
+ 
+];
 
-export default function Navbar() {
+export default function SidebarWithHeader({
+  children
+}) {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const location = useLocation();
+
+  // Map the route paths to their corresponding headers
+  const headerMap = {
+    '/admin/dashboard': 'Dashboard',
+    '/admin/children': 'Children List',
+    '/admin/abuse': 'Abuse Report',
+    '/admin/report': 'Report',
+    '/admin/home/customer': 'Customer',
+    '/admin/home/service-and-product': 'Service / Product',
+    '/admin/home/transaction': 'Transaction',
+    '/admin/home/report': 'Report',
+  };
+  const currentPath = location.pathname;
+  const currentHeader = headerMap[currentPath];
+
   return (
-    <Disclosure as="nav" className="bg-[#696BC2]">
-      {({ open }) => (
-        <>
-          <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8 ">
-            <div className="relative flex h-16 items-center justify-between">
-              <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
-                {/* Mobile menu button*/}
-                <Disclosure.Button className="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
-                  <span className="sr-only">Open main menu</span>
-                  {open ? (
-                    <XMarkIcon className="block h-6 w-6" aria-hidden="true" />
-                  ) : (
-                    <Bars3Icon className="block h-6 w-6" aria-hidden="true" />
-                  )}
-                </Disclosure.Button>
-              </div>
-              <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
-                <div className="flex flex-shrink-0 items-center">
-                  {/* <img
-                    className="block h-8 w-auto lg:hidden"
-                    src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
-                    alt="Your Company"
-                  />
-                  <img
-                    className="hidden h-8 w-auto lg:block"
-                    src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
-                    alt="Your Company"
-                  /> */}
-                  <p>Logo</p>
-                </div>
-                <div className="hidden sm:ml-6 sm:block">
-                  <div className="flex space-x-4">
-                    {navigation.map((item) => (
-                      <Link
-                        key={item.name}
-                        to={item.href}
-                        className={classNames(
-                          item.current ? 'bg-gray-900 text-red' : 'text-white hover:bg-gray-700 hover:text-white',
-                          'rounded-md px-3 py-2 text-sm font-medium'
-                        )}
-                        aria-current={item.current ? 'page' : undefined}
-                      >
-                        {item.name}
-                      </Link>
-                    ))}
-                  </div>
-                </div>
-              </div>
-              <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                <button
-                  type="button"
-                  className="rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
-                >
-                  <span className="sr-only">View notifications</span>
-                  <BellIcon className="h-6 w-6" aria-hidden="true" />
-                </button>
-
-                {/* Profile dropdown */}
-                <Menu as="div" className="relative ml-3">
-                  <div>
-                    <Menu.Button className="flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
-                      <span className="sr-only">Open user menu</span>
-                      <img
-                        className="h-8 w-8 rounded-full"
-                        src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                        alt=""
-                      />
-                    </Menu.Button>
-                  </div>
-                  <Transition
-                    as={Fragment}
-                    enter="transition ease-out duration-100"
-                    enterFrom="transform opacity-0 scale-95"
-                    enterTo="transform opacity-100 scale-100"
-                    leave="transition ease-in duration-75"
-                    leaveFrom="transform opacity-100 scale-100"
-                    leaveTo="transform opacity-0 scale-95"
-                  >
-                    <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                      <Menu.Item>
-                        {({ active }) => (
-                          <Link
-                            to="/"
-                            className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
-                          >
-                            Your Profile
-                          </Link>
-                        )}
-                      </Menu.Item>
-                      <Menu.Item>
-                        {({ active }) => (
-                          <Link
-                            to="/"
-                            className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
-                          >
-                            Settings
-                          </Link>
-                        )}
-                      </Menu.Item>
-                      <Menu.Item>
-                        {({ active }) => (
-                          <Link
-                            to="/"
-                            className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
-                          >
-                            Sign out
-                          </Link>
-                        )}
-                      </Menu.Item>
-                    </Menu.Items>
-                  </Transition>
-                </Menu>
-              </div>
-            </div>
-          </div>
-
-          <Disclosure.Panel className="sm:hidden">
-            <div className="space-y-1 px-2 pb-3 pt-2">
-              {navigation.map((item) => (
-                <Disclosure.Button
-                  key={item.name}
-                  as="a"
-                  href={item.href}
-                  className={classNames(
-                    item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                    'block rounded-md px-3 py-2 text-base font-medium'
-                  )}
-                  aria-current={item.current ? 'page' : undefined}
-                >
-                  {item.name}
-                </Disclosure.Button>
-              ))}
-            </div>
-          </Disclosure.Panel>
-        </>
-      )}
-    </Disclosure>
-  )
+    <Box minH="100vh">
+      <SidebarContent bg='#696bc2'
+        onClose={() => onClose}
+        display={{ base: 'none', md: 'block' }}
+      />
+      <Drawer 
+      
+        autoFocus={false}
+        isOpen={isOpen}
+        placement="left"
+        onClose={onClose}
+        returnFocusOnClose={false}
+        onOverlayClick={onClose}
+        size="full">
+        <DrawerContent>
+          <SidebarContent onClose={onClose} />
+        </DrawerContent>
+      </Drawer>
+      {/* mobilenav */}
+      <MobileNav  onOpen={onOpen} header={currentHeader} />
+      <Box  ml={{ base: 0, md: 60 }} h='auto' p="4" bg='#FFFFFF'>
+        {children}
+      </Box>
+    </Box>
+  );
 }
+
+
+
+const SidebarContent = ({ onClose, ...rest }) => {
+  return (
+    <Box
+      transition="3s ease"
+      bg={useColorModeValue('white', 'gray.900')}
+      borderRight="1px"
+      borderRightColor={useColorModeValue('gray.200', 'gray.700')}
+      w={{ base: 'full', md: 60 }}
+      pos="fixed"
+      h="full"
+color='white'
+
+      {...rest}>
+      <Flex h="20" alignItems="center" mx="8" justifyContent="space-between">
+      
+        <CloseButton display={{ base: 'flex', md: 'none' }} onClick={onClose} />
+      </Flex>
+      {LinkItems.map((link) => (
+        <NavItem key={link.name} icon={link.icon} destination={link.destination}>
+          {link.name}
+        </NavItem>
+      ))}
+    </Box>
+  );
+};
+
+
+const NavItem = ({ icon, destination, children, ...rest }) => {
+  const linkStyles = useStyleConfig('Link');
+  const location = useLocation();
+
+  const isHomeActive = location.pathname === `${destination}` ? true : false;
+
+  console.log(location.pathname)
+  console.log(destination)
+  return (
+    <Link to={destination}
+      _focus={{ boxShadow: 'none' }} >
+      <Flex position={'relative'}
+        align="center"
+        p="4"
+        ml='5'
+        borderRadius="lg"
+        role="group"
+        cursor="pointer"
+        
+        style={isHomeActive ? {
+          borderRadius: '0',
+          borderRight: '2px solid #8CC7FF',
+        
+        } : linkStyles}
+        _hover={{
+          borderRadius: '0',
+          borderRight: '2px solid #8CC7FF',
+          
+        }}
+        {...rest}>
+      
+        {/* <Text position='absolute' style={isHomeActive ? {
+          color: '#8CC7FF'
+         
+        
+        } : {color:'#f6f6f6'}} _groupChecked={{ color: '#8CC7FF' }} color='white' fontSize='7xl' left='0' bottom={'0'}>.</Text> */}
+        {icon && (
+          <Icon
+
+            mr="4"
+            fontSize="20"
+
+color={'white'}
+            as={icon}
+          />
+        )}
+        {children}
+      </Flex>
+    </Link>
+  );
+};
+
+const MobileNav = ({ onOpen, header, ...rest }) => {
+  return (
+    <Flex
+      ml={{ base: 0, md: 60 }}
+      px={{ base: 4, md: 4 }}
+      height="20"
+      alignItems="center"
+      bg={useColorModeValue('white', 'gray.900')}
+      borderBottomWidth="1px"
+      borderBottomColor={useColorModeValue('gray.200', 'gray.700')}
+      justifyContent={{ base: 'space-between', md: 'flex-end' }}
+      {...rest}>
+      <IconButton
+        display={{ base: 'flex', md: 'none' }}
+        onClick={onOpen}
+        variant="outline"
+        aria-label="open menu"
+        icon={<FiMenu />}
+      />
+
+      <Text
+        display={{ base: 'flex', md: 'none' }}
+        fontSize="2xl"
+        fontFamily="monospace"
+        fontWeight="bold">
+        Logo
+      </Text>
+      <HStack w='full' justifyContent={'space-between'}>
+
+        <Text display={{base:'none', md:'block'}} fontWeight={500} fontSize={'22px'} color={'#164C77'}>{header}</Text>
+
+
+        <HStack spacing={{ base: '0', md: '6' }}>
+
+
+          <IconButton
+            size="lg"
+            variant="ghost"
+            aria-label="open menu"
+            icon={<FiBell />}
+          />
+          <Flex alignItems={'center'}>
+            <Menu>
+              <MenuButton
+                py={2}
+                transition="all 0.3s"
+                _focus={{ boxShadow: 'none' }}>
+                <HStack>
+                  <Avatar
+                    size={'sm'}
+                    src={
+                      'https://images.unsplash.com/photo-1619946794135-5bc917a27793?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&s=b616b2c5b373a80ffc9636ba24f7a4a9'
+                    }
+                  />
+                  <VStack
+                    display={{ base: 'none', md: 'flex' }}
+                    alignItems="flex-start"
+                    spacing="1px"
+                    ml="2">
+                    <Text fontSize="sm">Ajoke Animashaun Janet</Text>
+                    <Text fontSize="xs" color="gray.600">
+                      Paylode Services
+                    </Text>
+                  </VStack>
+                  <Box display={{ base: 'none', md: 'flex' }}>
+                    <FiChevronDown />
+                  </Box>
+                </HStack>
+              </MenuButton>
+              <MenuList
+                bg={useColorModeValue('white', 'gray.900')}
+                borderColor={useColorModeValue('gray.200', 'gray.700')}>
+                <MenuItem>Profile</MenuItem>
+                <MenuItem>Settings</MenuItem>
+                <MenuItem>Billing</MenuItem>
+                <MenuDivider />
+                <Link to='/'>
+                <MenuItem>Sign out</MenuItem>
+                </Link>
+              </MenuList>
+            </Menu>
+          </Flex>
+        </HStack>
+      </HStack>
+    </Flex >
+  );
+};

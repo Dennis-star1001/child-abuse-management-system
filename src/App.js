@@ -5,20 +5,22 @@ import { Dashboard } from './pages/dashboard/Dashboard';
 import Navbar from './components/navbar/navbar';
 import { AbuseReport } from './pages/abuse/AbuseReport';
 import { ChildrenList } from './pages/children/ChildrenList';
+import { Report } from './pages/report/Report';
+import Login from './pages/onboarding/Login';
+import { AdminRoute } from './routes/AdminRoute';
 
 function App() {
   return (
     <div>
-    <Router>
-      <Navbar/>
-        <div className='p-2 bg-dark ' >
-          <Routes>
-            <Route path='/'  element={<Dashboard />} />
-            <Route path='abuse'  element={<AbuseReport />} />
-            <Route path='children'  element={<ChildrenList />} />
-          </Routes>
-        </div>
-     
+      <Router>
+       
+          <div className=' bg-dark ' >
+            <Routes>
+              <Route path='admin/*' element={<AdminRoute />} />
+              <Route path='/' element={<Login />} />
+            </Routes>
+          </div>
+       
       </Router>
     </div>
   );
