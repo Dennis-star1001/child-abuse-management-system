@@ -17,6 +17,7 @@ function App() {
           <div className=' bg-dark ' >
             <Routes>
               <Route path='admin/*' element={<AdminRoute />} />
+              
               <Route path='/' element={<Login />} />
             </Routes>
           </div>
