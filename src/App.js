@@ -5,6 +5,7 @@ import Navbar from "./components/navbar/navbar";
 import { AbuseReport } from "./pages/abuse/AbuseReport";
 import { ChildrenList } from "./pages/children/ChildrenList";
 import Login from "./pages/login/Login";
+import Footer from "./components/footer/Footer";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
             <Route path='login' element={<Login />} />
           </Routes>
         </div>
+        <Footer />
       </Router>
     </div>
   );
