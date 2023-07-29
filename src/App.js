@@ -4,7 +4,9 @@ import { Dashboard } from "./pages/dashboard/Dashboard";
 import Navbar from "./components/navbar/navbar";
 import { AbuseReport } from "./pages/abuse/AbuseReport";
 import { ChildrenList } from "./pages/children/ChildrenList";
-import Login from "./pages/login/Login";
+import { Report } from "./pages/report/Report";
+import Login from "./pages/onboarding/Login";
+import { AdminRoute } from "./routes/AdminRoute";
 import Footer from "./components/footer/Footer";
 
 function App() {
@@ -20,7 +22,6 @@ function App() {
             <Route path='login' element={<Login />} />
           </Routes>
         </div>
-        <Footer />
       </Router>
     </div>
   );
