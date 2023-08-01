@@ -12,18 +12,34 @@ const Login = () => {
   const [password, setPassword] = useState();
   const [message, setMessage] = useState("");
   const url = 'http://localhost/child_abuse_management_system_db';
-  const handleSubmit = async () => {
-    const data = {
-      email,
-      password,
-     
-    };
-    const res = await api("index.php", data)
-    console.log(res)
 
+  function validate(values) {
+    const errors = {};
+    if (!values.favoriteFood) {
+      errors.favoriteFood = "Required";
+    }
+
+    if (!values.favoritePlace) {
+      errors.favoritePlace = "Required";
+    }
+    return errors;
+  }
   
-  
-  
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    fetch(url, {
+      method: "POST",
+      body: JSON.stringify({ email, password }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        // Handle the response from the PHP backend
+        setMessage(data.message);
+      })
+      .catch((error) => {
+        setMessage("Error submitting the form. Please try again later.");
+      });
+  }
   return (
     <div className=''>
       <div className='grid lg:grid-cols-3'>

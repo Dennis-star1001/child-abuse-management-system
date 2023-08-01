@@ -14,7 +14,7 @@ function App() {
     <div>
       <Router>
         <Navbar />
-        <div className=' bg-dark '>
+        <div class=' bg-dark '>
           <Routes>
             <Route path='/' element={<Dashboard />} />
             <Route path='abuse' element={<AbuseReport />} />

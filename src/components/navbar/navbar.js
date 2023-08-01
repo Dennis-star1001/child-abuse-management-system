@@ -48,7 +48,7 @@ const LinkItems = [
   { name: 'Children', icon: MdOutlineReceipt, destination: './children' },
   { name: 'Abuse', icon: MdOutlinePeopleAlt, destination: './abuse' },
   { name: 'Report', icon: MdOutlineCases, destination: './report' },
- 
+
 ];
 
 export default function SidebarWithHeader({
@@ -72,13 +72,13 @@ export default function SidebarWithHeader({
   const currentHeader = headerMap[currentPath];
 
   return (
-    <Box minH="100vh">
+    <Box >
       <SidebarContent bg='#696bc2'
         onClose={() => onClose}
         display={{ base: 'none', md: 'block' }}
       />
-      <Drawer 
-      
+      <Drawer
+
         autoFocus={false}
         isOpen={isOpen}
         placement="left"
@@ -91,8 +91,8 @@ export default function SidebarWithHeader({
         </DrawerContent>
       </Drawer>
       {/* mobilenav */}
-      <MobileNav  onOpen={onOpen} header={currentHeader} />
-      <Box  ml={{ base: 0, md: 60 }} h='auto' p="4" bg='#FFFFFF'>
+      <MobileNav onOpen={onOpen} header={currentHeader} />
+      <Box ml={{ base: 0, md: 60 }} h='auto' p="4" bg='#FFFFFF'>
         {children}
       </Box>
     </Box>
@@ -111,11 +111,11 @@ const SidebarContent = ({ onClose, ...rest }) => {
       w={{ base: 'full', md: 60 }}
       pos="fixed"
       h="full"
-color='white'
+      color='white'
 
       {...rest}>
       <Flex h="20" alignItems="center" mx="8" justifyContent="space-between">
-      
+
         <CloseButton display={{ base: 'flex', md: 'none' }} onClick={onClose} />
       </Flex>
       {LinkItems.map((link) => (
@@ -146,19 +146,19 @@ const NavItem = ({ icon, destination, children, ...rest }) => {
         borderRadius="lg"
         role="group"
         cursor="pointer"
-        
+
         style={isHomeActive ? {
           borderRadius: '0',
           borderRight: '2px solid #8CC7FF',
-        
+
         } : linkStyles}
         _hover={{
           borderRadius: '0',
           borderRight: '2px solid #8CC7FF',
-          
+
         }}
         {...rest}>
-      
+
         {/* <Text position='absolute' style={isHomeActive ? {
           color: '#8CC7FF'
          
@@ -170,7 +170,7 @@ const NavItem = ({ icon, destination, children, ...rest }) => {
             mr="4"
             fontSize="20"
 
-color={'white'}
+            color={'white'}
             as={icon}
           />
         )}
@@ -209,7 +209,7 @@ const MobileNav = ({ onOpen, header, ...rest }) => {
       </Text>
       <HStack w='full' justifyContent={'space-between'}>
 
-        <Text display={{base:'none', md:'block'}} fontWeight={500} fontSize={'22px'} color={'#164C77'}>{header}</Text>
+        <Text display={{ base: 'none', md: 'block' }} fontWeight={500} fontSize={'22px'} color={'#164C77'}>{header}</Text>
 
 
         <HStack spacing={{ base: '0', md: '6' }}>
@@ -257,7 +257,7 @@ const MobileNav = ({ onOpen, header, ...rest }) => {
                 <MenuItem>Billing</MenuItem>
                 <MenuDivider />
                 <Link to='/'>
-                <MenuItem>Sign out</MenuItem>
+                  <MenuItem>Sign out</MenuItem>
                 </Link>
               </MenuList>
             </Menu>

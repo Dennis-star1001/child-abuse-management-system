@@ -12,7 +12,7 @@ const stats = [
 
 export default function Stats() {
     return (
-        <div className="bg-dark py-24 sm:py-1 ">
+        <div class="bg-primary py-24 sm:py-1 ">
 
             <div className="mx-auto max-w-7xl px-6 lg:px-8 ">
                 <dt class="text-[#6C6573] font-medium py-2">Summary</dt>
