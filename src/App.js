@@ -12,17 +12,19 @@ import Footer from "./components/footer/Footer";
 function App() {
   return (
     <div>
-      <Router>
-        <Navbar />
-        <div className=' bg-dark '>
-          <Routes>
-            <Route path='/' element={<Dashboard />} />
-            <Route path='abuse' element={<AbuseReport />} />
-            <Route path='children' element={<ChildrenList />} />
-            <Route path='login' element={<Login />} />
-          </Routes>
-        </div>
-      </Router>
+      {/* <Router> */}
+      {/* <div className='absolute'> */}
+      <Navbar />
+      {/* </div> */}
+      <div className='absolute w-full pt-12 lg:w-[85%] right-0 top-20'>
+        <Routes>
+          <Route path='/' element={<Dashboard />} />
+          <Route path='abuse' element={<AbuseReport />} />
+          <Route path='children' element={<ChildrenList />} />
+          <Route path='login' element={<Login />} />
+        </Routes>
+      </div>
+      {/* </Router> */}
     </div>
   );
 }
