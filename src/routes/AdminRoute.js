@@ -1,10 +1,10 @@
 import React from 'react'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Navbar from '../components/navbar/navbar';
-import { Dashboard } from '../pages/dashboard/Dashboard';
 import { AbuseReport } from '../pages/abuse/AbuseReport';
 import { ChildrenList } from '../pages/children/ChildrenList';
 import { Report } from '../pages/report/Report';
+import { Dashboard } from '../pages/dashboard/Dashboard';
 
 export const AdminRoute = () => {
   return (
