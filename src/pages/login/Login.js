@@ -1,11 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
 import backgroundImg from "../../assets/images/child.png";
 import { MdPassword } from "react-icons/md";
 import { AiOutlineUserAdd } from "react-icons/ai";
 import { FcGoogle } from "react-icons/fc";
 import { Link } from "react-router-dom";
 import CustomButton from "../../components/CustomButton";
+import axios from "axios";
 const Login = () => {
+
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
+  const [message, setMessage] = useState("");
+  const url = 'http://localhost/child_abuse_management_system_db';
+  const handleSubmit = async () => {
+    const data = {
+      email,
+      password,
+     
+    };
+    const res = await api("index.php", data)
+    console.log(res)
+
+  
+  
+  
   return (
     <div className=''>
       <div className='grid lg:grid-cols-3'>
@@ -19,22 +37,25 @@ const Login = () => {
             please fill out the required information in the input fields
             provided.
           </p>
-          <form className='w-full mt-9 flex flex-col items-center'>
+          <form method="post" action='http://localhost/child_abuse_management_system_db' className='w-full mt-9 flex flex-col items-center' onSubmit={handleSubmit}>
             <div className='relative z-0 w-full mb-6 group'>
               <div className='absolute right-3 top-3'>
                 <AiOutlineUserAdd size={"20"} />
               </div>
               <input
-                type='text'
-                name='name'
+                type='email'
+                name='email'
+                id='email'
                 className='block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-[1px] border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer'
-                placeholder=' '
+                placeholder='Enter Email'
+                onChange={(e) => setEmail(e.target.value)}
                 required
+                value={email}
               />
               <label
-                htmlFor='name'
+                htmlFor='email'
                 className='peer-focus:font-medium absolute text-sm text-black duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6'>
-                Name
+                Email
               </label>
             </div>
 
@@ -43,11 +64,14 @@ const Login = () => {
                 <MdPassword size={"20"} />
               </div>
               <input
+              id='password'
                 type='password'
                 name='password'
                 className='block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-[1px] border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer'
-                placeholder=' '
+                placeholder='Password'
                 required
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
               />
               <label
                 htmlFor='password'
@@ -55,12 +79,13 @@ const Login = () => {
                 Password
               </label>
             </div>
-            <CustomButton
+            {/* <CustomButton
               text='Login'
               width='100'
               textColor='text-white'
               py='py-3'
-            />
+            /> */}
+             <button type="submit">Submit</button>
             <button className='border py-2 md:py-3 rounded-md mt-2 flex gap-3 w-full font-normal md:font-semibold items-center justify-center'>
               <FcGoogle size={20} />
               Sign in with Google

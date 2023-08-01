@@ -4,32 +4,35 @@ import { Fragment } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { XMarkIcon } from '@heroicons/react/24/outline'
 import Form from './Form'
+import axios from 'axios'
 
 
 export const ChildrenList = () => {
+
+  
     const [open, setOpen] = useState(false)
     return (
         <div>
             <div className="mx-auto max-w-7xl  sm:px-6 lg:px-8 ">
                 <div className='flex justify-end'>
-                    <button className='bg-[#696BC2] text-white px-5 py-2 ' onClick={()=>setOpen(true)}>Add Child</button>
+                    <button className='bg-[#696BC2] text-white px-5 py-2 ' onClick={() => setOpen(true)}>Add Child</button>
 
                 </div>
 
-                <dt class="text-[#6C6573] font-medium py-2"></dt>
+                <dt className="text-[#6C6573] font-medium py-2"></dt>
                 <div className=" rounded-lg border border-[#F2F2F4] h-40 w-full">
 
-                    <div class="relative overflow-x-auto">
-                        <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                            <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                            <tr className="border-b  border-[#F3F3F3] bg-[#F9FBFC] ">
-                                    <th scope="col" class="px-6 py-3 font-medium text-xs">S/N</th>
-                                    <th scope="col" class="px-6 py-3 font-medium text-xs">Date</th>
-                                    <th scope="col" class="px-6 py-3 font-medium text-xs">Name</th>
-                                    <th scope="col" class="px-6 py-3 font-medium text-xs">Abuse ID</th>
-                                    <th scope="col" class="px-6 py-3 font-medium text-xs">State</th>
-                                    <th scope="col" class="px-6 py-3 font-medium text-xs">Country</th>
-                                    <th scope="col" class="px-6 py-3 font-medium text-xs">Action</th>
+                    <div className="relative overflow-x-auto">
+                        <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                            <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                                <tr className="border-b  border-[#F3F3F3] bg-[#F9FBFC] ">
+                                    <th scope="col" className="px-6 py-3 font-medium text-xs">S/N</th>
+                                    <th scope="col" className="px-6 py-3 font-medium text-xs">Date</th>
+                                    <th scope="col" className="px-6 py-3 font-medium text-xs">Name</th>
+                                    <th scope="col" className="px-6 py-3 font-medium text-xs">Abuse ID</th>
+                                    <th scope="col" className="px-6 py-3 font-medium text-xs">State</th>
+                                    <th scope="col" className="px-6 py-3 font-medium text-xs">Country</th>
+                                    <th scope="col" className="px-6 py-3 font-medium text-xs">Action</th>
 
                                 </tr>
                             </thead>
@@ -37,13 +40,13 @@ export const ChildrenList = () => {
 
                                 <tr className="bg-white font-medium dark:bg-gray-800 border-b border-[#F3F3F3]">
 
-                                    <td class="px-6 py-4">1</td>
-                                    <td class="px-6 py-4">Malcolm Lockyer</td>
-                                    <td class="px-6 py-4">1961</td>
-                                    <td class="px-6 py-4">1961</td>
-                                    <td class="px-6 py-4">1961</td>
-                                    <td class="px-6 py-4">1961</td>
-                                    <td class="px-6 py-4 ">
+                                    <td className="px-6 py-4">1</td>
+                                    <td className="px-6 py-4">Malcolm Lockyer</td>
+                                    <td className="px-6 py-4">1961</td>
+                                    <td className="px-6 py-4">1961</td>
+                                    <td className="px-6 py-4">1961</td>
+                                    <td className="px-6 py-4">1961</td>
+                                    <td className="px-6 py-4 ">
                                         <button
                                             type="button"
                                             className="font-medium p-2 mr-1 text-white hover:text-indigo-500 bg-[#696BC2]">
@@ -58,15 +61,15 @@ export const ChildrenList = () => {
 
 
                                 </tr>
-                                <tr class="font-medium bg-white dark:bg-gray-800 border-b border-[#F3F3F3]">
+                                <tr className="font-medium bg-white dark:bg-gray-800 border-b border-[#F3F3F3]">
 
-                                    <td class="px-6 py-4">2</td>
-                                    <td class="px-6 py-4">Malcolm Lockyer</td>
-                                    <td class="px-6 py-4">1961</td>
-                                    <td class="px-6 py-4">1961</td>
-                                    <td class="px-6 py-4">1961</td>
-                                    <td class="px-6 py-4">1961</td>
-                                    <td class="px-6 py-4 ">
+                                    <td className="px-6 py-4">2</td>
+                                    <td className="px-6 py-4">Malcolm Lockyer</td>
+                                    <td className="px-6 py-4">1961</td>
+                                    <td className="px-6 py-4">1961</td>
+                                    <td className="px-6 py-4">1961</td>
+                                    <td className="px-6 py-4">1961</td>
+                                    <td className="px-6 py-4 ">
                                         <button
                                             type="button"
                                             className="font-medium p-2 mr-1 text-white hover:text-indigo-500 bg-[#696BC2]">
@@ -81,15 +84,15 @@ export const ChildrenList = () => {
 
 
                                 </tr>
-                                <tr class="font-medium bg-white dark:bg-gray-800 border-b border-[#F3F3F3]">
+                                <tr className="font-medium bg-white dark:bg-gray-800 border-b border-[#F3F3F3]">
 
-                                    <td class="px-6 py-4">3</td>
-                                    <td class="px-6 py-4">Malcolm Lockyer</td>
-                                    <td class="px-6 py-4">1961</td>
-                                    <td class="px-6 py-4">1961</td>
-                                    <td class="px-6 py-4">1961</td>
-                                    <td class="px-6 py-4">1961</td>
-                                    <td class="px-6 py-4 ">
+                                    <td className="px-6 py-4">3</td>
+                                    <td className="px-6 py-4">Malcolm Lockyer</td>
+                                    <td className="px-6 py-4">1961</td>
+                                    <td className="px-6 py-4">1961</td>
+                                    <td className="px-6 py-4">1961</td>
+                                    <td className="px-6 py-4">1961</td>
+                                    <td className="px-6 py-4 ">
                                         <button
                                             type="button"
                                             className="font-medium p-2 mr-1 text-white hover:text-indigo-500 bg-[#696BC2]">
@@ -161,11 +164,11 @@ export const ChildrenList = () => {
                                         <div className="flex h-full flex-col overflow-y-scroll bg-white py-6 shadow-xl">
                                             <div className="px-4 sm:px-6">
                                                 <Dialog.Title className="text-base font-semibold leading-6 text-gray-900">
-                                                  Add New Child
+                                                    Add New Child
                                                 </Dialog.Title>
                                             </div>
                                             <div className="relative mt-6 flex-1 px-4 sm:px-6">
-                                                <Form/>
+                                                <Form />
                                             </div>
                                         </div>
                                     </Dialog.Panel>
