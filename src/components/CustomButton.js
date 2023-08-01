@@ -9,12 +9,14 @@ const CustomButton = ({
   px,
   py,
   width,
+
 }) => {
   return (
     <button
-      className={`bg-[${
-        backgroundColor ? backgroundColor : color.pupple
-      }] ${textColor}  rounded-md ${py} w-[${width}%] ${px} font-semibold`}
+      type="submit"
+      name="admin-login-btn"
+      className={`bg-[${backgroundColor ? backgroundColor : color.pupple
+        }] ${textColor}  rounded-md ${py} w-[${width}%] ${px} font-semibold`}
       onClick={handleEvent}>
       {text}
     </button>
