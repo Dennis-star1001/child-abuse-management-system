@@ -151,7 +151,7 @@ const MobileNav = ({ onOpen, header, ...rest }) => {
         aria-label="open menu"
         icon={<FiMenu />}
       />
-      <Flex  w='full' alignItems={'center'} justifyContent={'space-between'}>
+      <Flex w='full' alignItems={'center'} justifyContent={'space-between'}>
         <Text
           display={{ base: "none", md: "block" }}
           fontWeight={500}
@@ -194,7 +194,9 @@ const MobileNav = ({ onOpen, header, ...rest }) => {
                 <MenuItem>Settings</MenuItem>
                 <MenuItem>Billing</MenuItem>
                 <MenuDivider />
-                <MenuItem>Sign out</MenuItem>
+                <Link to='/'>
+                  <MenuItem>Sign out</MenuItem>
+                </Link>
               </MenuList>
             </Menu>
           </Flex>

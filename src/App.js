@@ -8,6 +8,7 @@ import { Report } from "./pages/report/Report";
 import Login from "./pages/onboarding/Login";
 import { Box } from "@chakra-ui/react";
 import AdminRoute from "./routes/AdminRoute";
+import Registration from "./pages/onboarding/register";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Routes>
            
             <Route path='/' element={<Login />} />
+            <Route path='register' element={<Registration />} />
             <Route path='admin/*' element={<AdminRoute />} />
           </Routes>
         </Box>
