@@ -23,7 +23,7 @@ import {
   MenuItem,
   MenuList,
   useStyleConfig,
-  
+
 } from '@chakra-ui/react'
 import {
   FiHome,
@@ -47,7 +47,7 @@ import {
 } from "react-icons/md";
 
 const LinkItems = [
-  { name: "Dashboard", icon: AiOutlineAppstore, destination: "./dashboard" },
+  { name: "Dashboard", icon: AiOutlineAppstore, destination: "/admin" },
   { name: "Children", icon: MdOutlineReceipt, destination: "./children" },
   { name: "Abuse", icon: MdOutlinePeopleAlt, destination: "./abuse" },
   { name: "Report", icon: MdOutlineCases, destination: "./report" },
@@ -90,53 +90,54 @@ const NavItem = ({ icon, destination, children, ...rest }) => {
   console.log(destination);
   return (
     <Link to={destination} _focus={{ boxShadow: "none" }}>
-    <Box
-      style={{ textDecoration: 'none' }}
-      _focus={{ boxShadow: 'none' }}>
-      <Flex
-        align="center"
-        p="4"
-        mx="4"
-        borderRadius="lg"
-        role="group"
-        cursor="pointer"
-        
-        style={
-          isHomeActive
-            ? {
-              borderRadius: "0",
-              borderRight: "2px solid #8CC7FF",
-            }
-            : linkStyles
-        }
-        _hover={{
-          borderRadius: "0",
-          borderRight: "2px solid #8CC7FF",
-        }}
-        {...rest}>
-        {icon && (
-          <Icon
-            mr="4"
-            fontSize="16"
-            _groupHover={{
-              color: 'white',
-            }}
-            as={icon}
-          />
-        )}
-        {children}
-      </Flex>
-    </Box>
+      <Box
+        style={{ textDecoration: 'none' }}
+        _focus={{ boxShadow: 'none' }}>
+        <Flex
+          align="center"
+          p="4"
+          mx="4"
+          borderRadius="lg"
+          role="group"
+          cursor="pointer"
+
+          style={
+            isHomeActive
+              ? {
+                borderRadius: "0",
+                borderRight: "2px solid #8CC7FF",
+              }
+              : linkStyles
+          }
+          _hover={{
+            borderRadius: "0",
+            borderRight: "2px solid #8CC7FF",
+          }}
+          {...rest}>
+          {icon && (
+            <Icon
+              mr="4"
+              fontSize="16"
+              _groupHover={{
+                color: 'white',
+              }}
+              as={icon}
+            />
+          )}
+          {children}
+        </Flex>
+      </Box>
     </Link>
   )
 }
 
-const MobileNav = ({ onOpen, ...rest }) => {
+const MobileNav = ({ onOpen, header, ...rest }) => {
   return (
     <Flex
       ml={{ base: 0, md: 60 }}
       px={{ base: 4, md: 4 }}
       height="20"
+      // w='full'
       alignItems="center"
       bg={useColorModeValue('white', 'gray.900')}
       borderBottomWidth="1px"
@@ -150,54 +151,55 @@ const MobileNav = ({ onOpen, ...rest }) => {
         aria-label="open menu"
         icon={<FiMenu />}
       />
+      <Flex  w='full' alignItems={'center'} justifyContent={'space-between'}>
+        <Text
+          display={{ base: "none", md: "block" }}
+          fontWeight={500}
+          fontSize={"22px"}
+          color={"#164C77"}>
+          {header}
 
-      <Text
-        display={{ base: 'flex', md: 'none' }}
-        fontSize="2xl"
-        fontFamily="monospace"
-        fontWeight="bold">
-        Logo
-      </Text>
-
-      <HStack spacing={{ base: '0', md: '6' }}>
-        <IconButton size="lg" variant="ghost" aria-label="open menu" icon={<FiBell />} />
-        <Flex alignItems={'center'}>
-          <Menu>
-            <MenuButton py={2} transition="all 0.3s" _focus={{ boxShadow: 'none' }}>
-              <HStack>
-                <Avatar
-                  size={'sm'}
-                  src={
-                    'https://images.unsplash.com/photo-1619946794135-5bc917a27793?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&s=b616b2c5b373a80ffc9636ba24f7a4a9'
-                  }
-                />
-                <VStack
-                  display={{ base: 'none', md: 'flex' }}
-                  alignItems="flex-start"
-                  spacing="1px"
-                  ml="2">
-                  <Text fontSize="sm">Justina Clark</Text>
-                  <Text fontSize="xs" color="gray.600">
-                    Admin
-                  </Text>
-                </VStack>
-                <Box display={{ base: 'none', md: 'flex' }}>
-                  <FiChevronDown />
-                </Box>
-              </HStack>
-            </MenuButton>
-            <MenuList
-              bg={useColorModeValue('white', 'gray.900')}
-              borderColor={useColorModeValue('gray.200', 'gray.700')}>
-              <MenuItem>Profile</MenuItem>
-              <MenuItem>Settings</MenuItem>
-              <MenuItem>Billing</MenuItem>
-              <MenuDivider />
-              <MenuItem>Sign out</MenuItem>
-            </MenuList>
-          </Menu>
-        </Flex>
-      </HStack>
+        </Text>
+        <HStack spacing={{ base: '0', md: '6' }}>
+          <IconButton size="lg" variant="ghost" aria-label="open menu" icon={<FiBell />} />
+          <Flex alignItems={'center'}>
+            <Menu>
+              <MenuButton py={2} transition="all 0.3s" _focus={{ boxShadow: 'none' }}>
+                <HStack>
+                  <Avatar
+                    size={'sm'}
+                    src={
+                      'https://images.unsplash.com/photo-1619946794135-5bc917a27793?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&s=b616b2c5b373a80ffc9636ba24f7a4a9'
+                    }
+                  />
+                  <VStack
+                    display={{ base: 'none', md: 'flex' }}
+                    alignItems="flex-start"
+                    spacing="1px"
+                    ml="2">
+                    <Text fontSize="sm">Justina Clark</Text>
+                    <Text fontSize="xs" color="gray.600">
+                      Admin
+                    </Text>
+                  </VStack>
+                  <Box display={{ base: 'none', md: 'flex' }}>
+                    <FiChevronDown />
+                  </Box>
+                </HStack>
+              </MenuButton>
+              <MenuList
+                bg={useColorModeValue('white', 'gray.900')}
+                borderColor={useColorModeValue('gray.200', 'gray.700')}>
+                <MenuItem>Profile</MenuItem>
+                <MenuItem>Settings</MenuItem>
+                <MenuItem>Billing</MenuItem>
+                <MenuDivider />
+                <MenuItem>Sign out</MenuItem>
+              </MenuList>
+            </Menu>
+          </Flex>
+        </HStack>
+      </Flex>
     </Flex>
   )
 }
@@ -208,7 +210,7 @@ const SidebarWithHeader = () => {
 
   // Map the route paths to their corresponding headers
   const headerMap = {
-    "/admin/dashboard": "Dashboard",
+    "/admin": "Dashboard",
     "/admin/children": "Children List",
     "/admin/abuse": "Abuse Report",
     "/admin/report": "Report",

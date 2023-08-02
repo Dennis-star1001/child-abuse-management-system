@@ -7,18 +7,18 @@ import { ChildrenList } from "./pages/children/ChildrenList";
 import { Report } from "./pages/report/Report";
 import Login from "./pages/onboarding/Login";
 import { Box } from "@chakra-ui/react";
+import AdminRoute from "./routes/AdminRoute";
 
 function App() {
   return (
     <div>
       <Router>
-        <Navbar />
+        
         <Box>
           <Routes>
-            <Route path='/dashboard' element={<Dashboard />} />
-            <Route path='abuse' element={<AbuseReport />} />
-            <Route path='children' element={<ChildrenList />} />
-            {/* <Route path='/' element={<Login />} /> */}
+           
+            <Route path='/' element={<Login />} />
+            <Route path='admin/*' element={<AdminRoute />} />
           </Routes>
         </Box>
       </Router>
