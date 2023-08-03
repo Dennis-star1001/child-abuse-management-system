@@ -117,7 +117,7 @@ export default function Registration() {
             <FormControl isRequired>
               <FormLabel>First name</FormLabel>
               <Input
-                placeholder='UserName'
+                placeholder='First Name'
                 _placeholder={{ color: "gray.500" }}
                 type='text'
                 name='username'
