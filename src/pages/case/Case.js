@@ -23,6 +23,10 @@ import {
 import { AiFillEdit, AiFillEye } from 'react-icons/ai'
 import { Link } from 'react-router-dom'
 import child from "../../assets/images/child.png"
+import PersonalInformation from './components/modals/PersonalInformation'
+import { PersonalInfo } from './components/PersonalChildInfo'
+import { ParentInfo } from './components/ParentInfo'
+import { Address } from './components/Address'
 export const Case = () => {
     return (
         <Box ml='64' px='5' class="mx-auto max-w-7xl  sm:px-6 lg:px-8">
@@ -39,95 +43,10 @@ export const Case = () => {
                     <Text color={'#A5AEBB'} fontSize={'sm'}>+234 81635 45039</Text>
                 </Box>
             </Flex>
-            <Flex flexDirection={'column'} my='10' borderRadius={'2xl'} border='1px solid #E2E8F0' gap='2' p='7'>
-                <Text fontWeight={'medium'}>Personal Information</Text>
-                <Flex justifyContent={'space-between'}>
-                    <SimpleGrid pt='5' columns={2} spacing={10} w='2xl'>
-                        <Box >
-                            <Text color={'#A5AEBB'} fontSize={'sm'}>First Name</Text>
-                            <Text fontWeight={'medium'}>Dennis </Text>
-                        </Box>
-                        <Box>
-                            <Text color={'#A5AEBB'} fontSize={'sm'}>Last Name</Text>
-                            <Text fontWeight={'medium'}>Temoye </Text>
-                        </Box>
-                        <Box>
-                            <Text color={'#A5AEBB'} fontSize={'sm'}>Email Address</Text>
-                            <Text fontWeight={'medium'}>admin@gmail.com </Text>
-                        </Box>
-                        <Box>
-                            <Text color={'#A5AEBB'} fontSize={'sm'}>Phone</Text>
-                            <Text fontWeight={'medium'}>+234 8163 5450 39</Text>
-                        </Box>
-                        <Box>
-                            <Text color={'#A5AEBB'} fontSize={'sm'}>Bio</Text>
-                            <Text fontWeight={'medium'}>Student</Text>
-                        </Box>
-                    </SimpleGrid>
-                    <Button>Edit</Button>
-                </Flex>
-            </Flex>
-            <Flex flexDirection={'column'} my='10' borderRadius={'2xl'} border='1px solid #E2E8F0' gap='2' p='7'>
-                <Text fontWeight={'medium'}>Parent/Gurdian Information</Text>
-                <Flex justifyContent={'space-between'}>
-                    <SimpleGrid pt='5' columns={2} spacing={10} w='2xl'>
-                        <Box >
-                            <Text color={'#A5AEBB'} fontSize={'sm'}>First Name</Text>
-                            <Text fontWeight={'medium'}>Dennis </Text>
-                        </Box>
-                        <Box>
-                            <Text color={'#A5AEBB'} fontSize={'sm'}>Last Name</Text>
-                            <Text fontWeight={'medium'}>Temoye </Text>
-                        </Box>
-                        <Box>
-                            <Text color={'#A5AEBB'} fontSize={'sm'}>Email Address</Text>
-                            <Text fontWeight={'medium'}>admin@gmail.com </Text>
-                        </Box>
-                        <Box>
-                            <Text color={'#A5AEBB'} fontSize={'sm'}>Phone</Text>
-                            <Text fontWeight={'medium'}>+234 8163 5450 39</Text>
-                        </Box>
-                        <Box>
-                            <Text color={'#A5AEBB'} fontSize={'sm'}>Bio</Text>
-                            <Text fontWeight={'medium'}>Student</Text>
-                        </Box>
-                    </SimpleGrid>
-                    <Button>Edit</Button>
-                </Flex>
-            </Flex>
-            <Flex flexDirection={'column'} my='10'  borderRadius={'2xl'} border='1px solid #E2E8F0' gap='2' p='7'>
-                <Text fontWeight={'medium'}>Address</Text>
-                <Flex justifyContent={'space-between'}>
-                <SimpleGrid  pt='5' columns={2} spacing={10} w='2xl'>
-                    <Box >
-                        <Text color={'#A5AEBB'} fontSize={'sm'}>Country</Text>
-                        <Text fontWeight={'medium'}>Nigeria </Text>
-                    </Box>
-                    <Box>
-                        <Text color={'#A5AEBB'} fontSize={'sm'}>City/State</Text>
-                        <Text fontWeight={'medium'}>Lagos </Text>
-                    </Box>
-                    <Box>
-                        <Text color={'#A5AEBB'} fontSize={'sm'}>Postal Code</Text>
-                        <Text fontWeight={'medium'}>Nil </Text>
-                    </Box>
-                    <Box>
-                        <Text color={'#A5AEBB'} fontSize={'sm'}>Home Address</Text>
-                        <Text fontWeight={'medium'}>Nil</Text>
-                    </Box>
-                    <Box>
-                        <Text color={'#A5AEBB'} fontSize={'sm'}>Parent/Gurdian Address</Text>
-                        <Text fontWeight={'medium'}>Nil</Text>
-                    </Box>
-                    <Box>
-                        <Text color={'#A5AEBB'} fontSize={'sm'}>School Address Address</Text>
-                        <Text fontWeight={'medium'}>Nil</Text>
-                    </Box>
-                    
-                </SimpleGrid>
-                <Button>Edit</Button>
-                </Flex>
-            </Flex>
+          <PersonalInfo/>
+        
+        <ParentInfo/>
+        <Address/>
            
             <TableContainer>
                 <Table size='sm'>

@@ -1,3 +1,6 @@
+import { Button, FormControl, FormLabel, Input, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, useDisclosure } from "@chakra-ui/react"
+import React from "react"
+
 export default function PersonalInformation () {
     const { isOpen, onOpen, onClose } = useDisclosure()
   
@@ -6,10 +9,7 @@ export default function PersonalInformation () {
   
     return (
       <>
-        <Button onClick={onOpen}>Open Modal</Button>
-        <Button ml={4} ref={finalRef}>
-          I'll receive focus on close
-        </Button>
+        <Button onClick={onOpen}>Edit</Button>
   
         <Modal
           initialFocusRef={initialRef}
