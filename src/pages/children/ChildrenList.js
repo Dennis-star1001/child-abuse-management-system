@@ -4,7 +4,20 @@ import { Fragment } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import Form from "./Form";
-import { Box } from "@chakra-ui/react";
+import {
+  Table,
+  Thead,
+  Tbody,
+  Tfoot,
+  Tr,
+  Th,
+  Td,
+  TableCaption,
+  TableContainer,
+  Box,
+  Text,
+  Button
+} from '@chakra-ui/react'
 // import axios from 'axios'
 
 export const ChildrenList = () => {
@@ -21,9 +34,42 @@ export const ChildrenList = () => {
         </div>
 
         <dt className='text-[#36224b] font-medium py-2'></dt>
-        <div className=' rounded-lg border border-[#F2F2F4] h-40 w-full'>
+        <div className=' rounded-lg border border-[#F2F2F4]  w-full'>
           <div className='relative overflow-x-auto'>
-            <table className='w-full text-sm text-left text-gray-500 dark:text-gray-400'>
+          <TableContainer>
+                <Table size='sm'>
+                    <Thead>
+                        <Tr >
+                            <Th textAlign={'center'}>ID</Th>
+                            <Th textAlign={'center'}>Full Name</Th>
+
+                            <Th textAlign={'center'}>Gender</Th>
+                            <Th textAlign={'center'}>Case Category</Th>
+                            <Th textAlign={'center'}>Status</Th>
+                            <Th textAlign={'center'} >Email Address</Th>
+                            <Th textAlign={'center'}>Action</Th>
+
+                        </Tr>
+                    </Thead>
+                    <Tbody>
+                        <Tr>
+                            <Td textAlign={'center'}>#1</Td>
+                            <Td textAlign={'center'}>John Dav</Td>
+                            <Td textAlign={'center'}>Male</Td>
+                            <Td textAlign={'center'} >millimetres</Td>
+                            <Td><Text color='white' py='1' borderRadius={'2xl'} textAlign={'center'} bg='green'>Solved</Text></Td>
+
+                            <Td textAlign={'center'}>john@gmail.com</Td>
+                            <Td textAlign={'center'}>
+                                <Button>View</Button>
+                            </Td>
+
+
+                        </Tr>
+                    </Tbody>
+                </Table>
+            </TableContainer>
+            {/* <table className='w-full text-sm text-left text-gray-500 dark:text-gray-400'>
               <thead className='text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400'>
                 <tr className='border-b  border-[#F3F3F3] bg-[#F9FBFC] '>
                   <th scope='col' className='px-6 py-3 font-medium text-xs'>
@@ -111,7 +157,7 @@ export const ChildrenList = () => {
                   </td>
                 </tr>
               </tbody>
-            </table>
+            </table> */}
           </div>
         </div>
       </div>

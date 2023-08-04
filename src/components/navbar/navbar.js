@@ -49,7 +49,8 @@ import {
 const LinkItems = [
   { name: "Dashboard", icon: AiOutlineAppstore, destination: "/admin" },
   { name: "Children", icon: MdOutlineReceipt, destination: "./children" },
-  { name: "Abuse", icon: MdOutlinePeopleAlt, destination: "./abuse" },
+  { name: "Case", icon: MdOutlinePeopleAlt, destination: "./case" },
+  { name: "Profile", icon: MdOutlinePeopleAlt, destination: "./profile" },
   { name: "Report", icon: MdOutlineCases, destination: "./report" },
 ];
 
@@ -213,13 +214,10 @@ const SidebarWithHeader = () => {
   // Map the route paths to their corresponding headers
   const headerMap = {
     "/admin": "Dashboard",
-    "/admin/children": "Children List",
-    "/admin/abuse": "Abuse Report",
+    "/admin/children": "Child List",
+    "/admin/case": "Reported Cases",
+    "/admin/profile": "Profile",
     "/admin/report": "Report",
-    "/admin/home/customer": "Customer",
-    "/admin/home/service-and-product": "Service / Product",
-    "/admin/home/transaction": "Transaction",
-    "/admin/home/report": "Report",
   };
   const currentPath = location.pathname;
   const currentHeader = headerMap[currentPath];
