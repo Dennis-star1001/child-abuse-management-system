@@ -15,11 +15,120 @@ import {
     Button,
     SimpleGrid,
     Heading,
-    Flex
+    Flex,
+    Image,
+    WrapItem,
+    Avatar
 } from '@chakra-ui/react'
+import { AiFillEdit, AiFillEye } from 'react-icons/ai'
+import { Link } from 'react-router-dom'
+import child from "../../assets/images/child.png"
 export const Case = () => {
     return (
         <Box ml='64' px='5' class="mx-auto max-w-7xl  sm:px-6 lg:px-8">
+            <Flex alignItems={'center'} borderRadius={'2xl'} border='1px solid #E2E8F0' gap='5' p='7'>
+                {/* <Box w='80' h='AUTO' bg='white' >
+                    <Image borderRadius={'full'}  src={child} h='full' objectFit={'cover'}/>
+                </Box> */}
+                <WrapItem>
+                    <Avatar size={'xl'} name='Dan Abrahmov' src='https://bit.ly/dan-abramov' />
+                </WrapItem>
+                <Box w='full' bg='white'>
+                    <Text fontSize={'lg'} fontWeight={'medium'}>Temoye Dennis</Text>
+                    <Text color={'#A5AEBB'} fontSize={'sm'}>tdennis.developer@gmail.com</Text>
+                    <Text color={'#A5AEBB'} fontSize={'sm'}>+234 81635 45039</Text>
+                </Box>
+            </Flex>
+            <Flex flexDirection={'column'} my='10' borderRadius={'2xl'} border='1px solid #E2E8F0' gap='2' p='7'>
+                <Text fontWeight={'medium'}>Personal Information</Text>
+                <Flex justifyContent={'space-between'}>
+                    <SimpleGrid pt='5' columns={2} spacing={10} w='2xl'>
+                        <Box >
+                            <Text color={'#A5AEBB'} fontSize={'sm'}>First Name</Text>
+                            <Text fontWeight={'medium'}>Dennis </Text>
+                        </Box>
+                        <Box>
+                            <Text color={'#A5AEBB'} fontSize={'sm'}>Last Name</Text>
+                            <Text fontWeight={'medium'}>Temoye </Text>
+                        </Box>
+                        <Box>
+                            <Text color={'#A5AEBB'} fontSize={'sm'}>Email Address</Text>
+                            <Text fontWeight={'medium'}>admin@gmail.com </Text>
+                        </Box>
+                        <Box>
+                            <Text color={'#A5AEBB'} fontSize={'sm'}>Phone</Text>
+                            <Text fontWeight={'medium'}>+234 8163 5450 39</Text>
+                        </Box>
+                        <Box>
+                            <Text color={'#A5AEBB'} fontSize={'sm'}>Bio</Text>
+                            <Text fontWeight={'medium'}>Student</Text>
+                        </Box>
+                    </SimpleGrid>
+                    <Button>Edit</Button>
+                </Flex>
+            </Flex>
+            <Flex flexDirection={'column'} my='10' borderRadius={'2xl'} border='1px solid #E2E8F0' gap='2' p='7'>
+                <Text fontWeight={'medium'}>Parent/Gurdian Information</Text>
+                <Flex justifyContent={'space-between'}>
+                    <SimpleGrid pt='5' columns={2} spacing={10} w='2xl'>
+                        <Box >
+                            <Text color={'#A5AEBB'} fontSize={'sm'}>First Name</Text>
+                            <Text fontWeight={'medium'}>Dennis </Text>
+                        </Box>
+                        <Box>
+                            <Text color={'#A5AEBB'} fontSize={'sm'}>Last Name</Text>
+                            <Text fontWeight={'medium'}>Temoye </Text>
+                        </Box>
+                        <Box>
+                            <Text color={'#A5AEBB'} fontSize={'sm'}>Email Address</Text>
+                            <Text fontWeight={'medium'}>admin@gmail.com </Text>
+                        </Box>
+                        <Box>
+                            <Text color={'#A5AEBB'} fontSize={'sm'}>Phone</Text>
+                            <Text fontWeight={'medium'}>+234 8163 5450 39</Text>
+                        </Box>
+                        <Box>
+                            <Text color={'#A5AEBB'} fontSize={'sm'}>Bio</Text>
+                            <Text fontWeight={'medium'}>Student</Text>
+                        </Box>
+                    </SimpleGrid>
+                    <Button>Edit</Button>
+                </Flex>
+            </Flex>
+            <Flex flexDirection={'column'} my='10'  borderRadius={'2xl'} border='1px solid #E2E8F0' gap='2' p='7'>
+                <Text fontWeight={'medium'}>Address</Text>
+                <Flex justifyContent={'space-between'}>
+                <SimpleGrid  pt='5' columns={2} spacing={10} w='2xl'>
+                    <Box >
+                        <Text color={'#A5AEBB'} fontSize={'sm'}>Country</Text>
+                        <Text fontWeight={'medium'}>Nigeria </Text>
+                    </Box>
+                    <Box>
+                        <Text color={'#A5AEBB'} fontSize={'sm'}>City/State</Text>
+                        <Text fontWeight={'medium'}>Lagos </Text>
+                    </Box>
+                    <Box>
+                        <Text color={'#A5AEBB'} fontSize={'sm'}>Postal Code</Text>
+                        <Text fontWeight={'medium'}>Nil </Text>
+                    </Box>
+                    <Box>
+                        <Text color={'#A5AEBB'} fontSize={'sm'}>Home Address</Text>
+                        <Text fontWeight={'medium'}>Nil</Text>
+                    </Box>
+                    <Box>
+                        <Text color={'#A5AEBB'} fontSize={'sm'}>Parent/Gurdian Address</Text>
+                        <Text fontWeight={'medium'}>Nil</Text>
+                    </Box>
+                    <Box>
+                        <Text color={'#A5AEBB'} fontSize={'sm'}>School Address Address</Text>
+                        <Text fontWeight={'medium'}>Nil</Text>
+                    </Box>
+                    
+                </SimpleGrid>
+                <Button>Edit</Button>
+                </Flex>
+            </Flex>
+           
             <TableContainer>
                 <Table size='sm'>
                     <Thead>
@@ -44,8 +153,14 @@ export const Case = () => {
                             <Td><Text color='white' py='1' borderRadius={'2xl'} textAlign={'center'} bg='green'>Solved</Text></Td>
 
                             <Td textAlign={'center'}>john@gmail.com</Td>
-                            <Td textAlign={'center'}>
-                                <Button>View</Button>
+                            <Td display={'flex'} gap={2} justifyContent="center" textAlign={'center'}>
+                                <Button>
+
+                                    <Link to='/admin/case' ><AiFillEye /></Link>
+                                </Button>
+                                <Button>
+                                    <AiFillEdit />
+                                </Button>
                             </Td>
 
 
