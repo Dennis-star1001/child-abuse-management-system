@@ -1,6 +1,6 @@
 import { Box, Button, Flex, SimpleGrid, Text } from '@chakra-ui/react'
 import React from 'react'
-import PersonalInformation from './modals/PersonalInformation'
+import PersonalInformation from './modals/EditPersonalInformation'
 
 export const PersonalInfo = () => {
   return (

@@ -1,5 +1,6 @@
-import { Button, FormControl, FormLabel, Input, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, useDisclosure } from "@chakra-ui/react"
+import { Button, FormControl, FormLabel, Input, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, SimpleGrid, Textarea, useDisclosure } from "@chakra-ui/react"
 import React from "react"
+import { AiFillEdit } from "react-icons/ai"
 
 export default function PersonalInformation () {
     const { isOpen, onOpen, onClose } = useDisclosure()
@@ -9,9 +10,10 @@ export default function PersonalInformation () {
   
     return (
       <>
-        <Button onClick={onOpen}>Edit</Button>
+         <Button onClick={onOpen}>Edit <AiFillEdit/></Button>
   
-        <Modal
+  
+        <Modal size={'4xl'}
           initialFocusRef={initialRef}
           finalFocusRef={finalRef}
           isOpen={isOpen}
@@ -19,18 +21,32 @@ export default function PersonalInformation () {
         >
           <ModalOverlay />
           <ModalContent>
-            <ModalHeader>Create your account</ModalHeader>
+            <ModalHeader>Personal Information</ModalHeader>
             <ModalCloseButton />
-            <ModalBody pb={6}>
+            <ModalBody pb={6} >
+            <SimpleGrid columns={2} spacing={5}>
               <FormControl>
                 <FormLabel>First name</FormLabel>
                 <Input ref={initialRef} placeholder='First name' />
               </FormControl>
   
-              <FormControl mt={4}>
+              <FormControl >
                 <FormLabel>Last name</FormLabel>
                 <Input placeholder='Last name' />
               </FormControl>
+              <FormControl >
+                <FormLabel>Email Address</FormLabel>
+                <Input placeholder='john@gmail.com' />
+              </FormControl>
+              <FormControl >
+                <FormLabel>Phone Number</FormLabel>
+                <Input placeholder='+234 *** **** **' />
+              </FormControl>
+              <FormControl >
+                <FormLabel>Bio</FormLabel>
+                <Textarea placeholder="Enter Bio" />
+              </FormControl>
+              </SimpleGrid>
             </ModalBody>
   
             <ModalFooter>

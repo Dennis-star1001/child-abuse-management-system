@@ -1,15 +1,16 @@
 import { Avatar, Box, Button, Flex, Table, TableContainer, Tbody, Td, Text, Th, Thead, Tr, WrapItem } from '@chakra-ui/react'
 import React from 'react'
-
+import { PersonalInfo } from './components/PersonalChildInfo'
+import { ParentInfo } from './components/ParentInfo'
+import { Address } from './components/Address'
 import { Link } from 'react-router-dom'
-import { AiFillEdit, AiFillEye } from 'react-icons/ai'
-import { PersonalInfo } from '../case/components/PersonalChildInfo'
-import { Address } from '../case/components/Address'
+import { AiFillEdit } from 'react-icons/ai'
+import { CaseDetails } from './components/CaseDetails'
 
-export const Profile = () => {
+export const ProfileOfChild = () => {
   return (
 <Box ml='64' px='5' class="mx-auto max-w-7xl  sm:px-6 lg:px-8">
-     
+     <Text fontWeight={'medium'} px={'5'} py='2' fontSize={'20'}>Child Profile</Text>
             <Flex alignItems={'center'} borderRadius={'2xl'} border='1px solid #E2E8F0' gap='5' p='7'>
                
                 <WrapItem>
@@ -23,9 +24,9 @@ export const Profile = () => {
             </Flex>
             <PersonalInfo />
 
-          
+            <ParentInfo />
             <Address />
-            
+            <CaseDetails/>
             {/* <TableContainer>
                 <Table size='sm'>
                     <Thead>

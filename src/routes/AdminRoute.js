@@ -16,6 +16,7 @@ import { useEffect } from "react";
 import { toast } from "react-toastify";
 import { Profile } from "../pages/profile/Profile";
 import { Case } from "../pages/case/Case";
+import { ProfileOfChild } from "../pages/case/ProfileOfChild";
 
 function AdminRoute() {
   const navigate = useNavigate();
@@ -36,6 +37,7 @@ function AdminRoute() {
           <Route path='/profile' element={<Profile />} />
           <Route path='/case' element={<Case />} />
           <Route path='/children' element={<ChildrenList />} />
+          <Route path='/child-profile/:id' element={<ProfileOfChild />} />
         </Routes>
       </Box>
     </div>

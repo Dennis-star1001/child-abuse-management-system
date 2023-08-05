@@ -1,7 +1,8 @@
 
 import { Box, Button, Flex, SimpleGrid, Text } from '@chakra-ui/react'
 import React from 'react'
-import PersonalInformation from './modals/PersonalInformation'
+import PersonalInformation from './modals/EditPersonalInformation'
+import EditAddress from './modals/EditAddress'
 
 export const Address = () => {
   return (
@@ -35,7 +36,7 @@ export const Address = () => {
         </Box>
         
     </SimpleGrid>
-    <PersonalInformation/>
+    <EditAddress/>
    
     </Flex>
 </Flex>
