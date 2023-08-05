@@ -27,3 +27,7 @@ export const getData = async (url) => {
   let res = await axios.get(`${baseUrl}/${url}`);
   return res;
 };
+export const handleDelete = (url) => {
+  const res = axios.delete(`${baseUrl}/${url}`);
+  return res;
+};

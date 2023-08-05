@@ -10,7 +10,7 @@ import { getData } from "../../api/api";
 
 export const ChildrenList = ({ children }) => {
   const [open, setOpen] = useState(false);
-  console.log(children);
+  // console.log(children);
   return (
     <Box pl='64'>
       <div className='mx-auto max-w-7xl  sm:px-6 lg:px-8 '>

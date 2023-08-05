@@ -28,7 +28,7 @@ export default function Login() {
     formData.append("password", password);
 
     // toast(JSON.stringify(data));
-    if (!password || !email) {
+    if (!data) {
       toast.error("Empty field !");
       setLoading(false);
     } else if (password === "123456" && email === "admin@gmail.com") {
