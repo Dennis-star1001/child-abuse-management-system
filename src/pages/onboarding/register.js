@@ -19,7 +19,7 @@ import { SmallCloseIcon } from "@chakra-ui/icons";
 // import { Link } from "react-router-dom";
 import { postData } from "../../api/api";
 import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Registration() {
   const navigate = useNavigate();
@@ -61,7 +61,7 @@ export default function Registration() {
       try {
         postData(link, formData).then((res) => {
           toast.success(res.data);
-          //   console.log(res.data);
+            // console.log(res.data);
           setData({});
           navigate("/");
           setLoading(false);
@@ -222,8 +222,18 @@ export default function Registration() {
               {loading ? <Spinner /> : "Submit"}
             </button>
           </Stack>
+          <p className='mt-10 text-center text-sm text-gray-500'>
+           Already have an account?{" "}
+            <Link
+              to='/'
+              className='font-semibold leading-6 text-indigo-600 hover:text-indigo-500'>
+              Sign in
+            </Link>
+          </p>
         </Stack>
+        
       </Flex>
+     
     </form>
   );
 }

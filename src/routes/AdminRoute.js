@@ -11,11 +11,12 @@ import Navbar from "../components/navbar/navbar";
 
 import { Box } from "@chakra-ui/react";
 import { Dashboard } from "../pages/dashboard/Dashboard";
-import { AbuseReport } from "../pages/abuse/AbuseReport";
 import { ChildrenList } from "../pages/children/ChildrenList";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { getData } from "../api/api";
+import { Profile } from "../pages/profile/Profile";
+import { Case } from "../pages/case/Case";
 
 function AdminRoute() {
   const navigate = useNavigate();
@@ -58,6 +59,10 @@ function AdminRoute() {
             path='/children'
             element={<ChildrenList children={children} />}
           />
+          <Route path='/' element={<Dashboard />} />
+          <Route path='/profile' element={<Profile />} />
+          <Route path='/case' element={<Case />} />
+          <Route path='/children' element={<ChildrenList />} />
         </Routes>
       </Box>
     </div>
