@@ -5,10 +5,12 @@ import { Dialog, Transition } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import Form from "./Form";
 import { Box } from "@chakra-ui/react";
+import { getData } from "../../api/api";
 // import axios from 'axios'
 
-export const ChildrenList = () => {
+export const ChildrenList = ({ children }) => {
   const [open, setOpen] = useState(false);
+  console.log(children);
   return (
     <Box pl='64'>
       <div className='mx-auto max-w-7xl  sm:px-6 lg:px-8 '>
@@ -23,26 +25,26 @@ export const ChildrenList = () => {
         <dt className='text-[#36224b] font-medium py-2'></dt>
         <div className=' rounded-lg border border-[#F2F2F4] h-40 w-full'>
           <div className='relative overflow-x-auto'>
-            <table className='w-full text-sm text-left text-gray-500 dark:text-gray-400'>
+            <table className='w-full shadow text-sm text-left text-gray-500 dark:text-gray-400'>
               <thead className='text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400'>
                 <tr className='border-b  border-[#F3F3F3] bg-[#F9FBFC] '>
                   <th scope='col' className='px-6 py-3 font-medium text-xs'>
                     S/N
                   </th>
                   <th scope='col' className='px-6 py-3 font-medium text-xs'>
-                    Date
+                    Name
                   </th>
                   <th scope='col' className='px-6 py-3 font-medium text-xs'>
-                    Name
+                    Email
                   </th>
                   <th scope='col' className='px-6 py-3 font-medium text-xs'>
                     Abuse ID
                   </th>
                   <th scope='col' className='px-6 py-3 font-medium text-xs'>
-                    State
+                    Age
                   </th>
                   <th scope='col' className='px-6 py-3 font-medium text-xs'>
-                    Country
+                    Address
                   </th>
                   <th scope='col' className='px-6 py-3 font-medium text-xs'>
                     Action
@@ -50,66 +52,35 @@ export const ChildrenList = () => {
                 </tr>
               </thead>
               <tbody>
-                <tr className='bg-white font-medium dark:bg-gray-800 border-b border-[#F3F3F3]'>
-                  <td className='px-6 py-4'>1</td>
-                  <td className='px-6 py-4'>Malcolm Lockyer</td>
-                  <td className='px-6 py-4'>1961</td>
-                  <td className='px-6 py-4'>1961</td>
-                  <td className='px-6 py-4'>1961</td>
-                  <td className='px-6 py-4'>1961</td>
-                  <td className='px-6 py-4 '>
-                    <button
-                      type='button'
-                      className='font-medium p-2 mr-1 text-white hover:text-indigo-500 bg-[#696BC2]'>
-                      Edit
-                    </button>
-                    <button
-                      type='button'
-                      className='font-medium p-2 mx-1 text-white hover:text-indigo-500 bg-[#FF0000]'>
-                      Delete
-                    </button>
-                  </td>
-                </tr>
-                <tr className='font-medium bg-white dark:bg-gray-800 border-b border-[#F3F3F3]'>
-                  <td className='px-6 py-4'>2</td>
-                  <td className='px-6 py-4'>Malcolm Lockyer</td>
-                  <td className='px-6 py-4'>1961</td>
-                  <td className='px-6 py-4'>1961</td>
-                  <td className='px-6 py-4'>1961</td>
-                  <td className='px-6 py-4'>1961</td>
-                  <td className='px-6 py-4 '>
-                    <button
-                      type='button'
-                      className='font-medium p-2 mr-1 text-white hover:text-indigo-500 bg-[#696BC2]'>
-                      Edit
-                    </button>
-                    <button
-                      type='button'
-                      className='font-medium p-2 mx-1 text-white hover:text-indigo-500 bg-[#FF0000]'>
-                      Delete
-                    </button>
-                  </td>
-                </tr>
-                <tr className='font-medium bg-white dark:bg-gray-800 border-b border-[#F3F3F3]'>
-                  <td className='px-6 py-4'>3</td>
-                  <td className='px-6 py-4'>Malcolm Lockyer</td>
-                  <td className='px-6 py-4'>1961</td>
-                  <td className='px-6 py-4'>1961</td>
-                  <td className='px-6 py-4'>1961</td>
-                  <td className='px-6 py-4'>1961</td>
-                  <td className='px-6 py-4 '>
-                    <button
-                      type='button'
-                      className='font-medium p-2 mr-1 text-white hover:text-indigo-500 bg-[#696BC2]'>
-                      Edit
-                    </button>
-                    <button
-                      type='button'
-                      className='font-medium p-2 mx-1 text-white hover:text-indigo-500 bg-[#FF0000]'>
-                      Delete
-                    </button>
-                  </td>
-                </tr>
+                {children &&
+                  children.map((data, index) => {
+                    return (
+                      <tr
+                        key={index}
+                        className='bg-white font-medium dark:bg-gray-800 border-b border-[#F3F3F3]'>
+                        <td className='px-6 py-4'>{data.id}</td>
+                        <td className='px-6 py-4'>
+                          {data.username} {data.lastname}
+                        </td>
+                        <td className='px-6 py-4'>{data.email}</td>
+                        <td className='px-6 py-4'>Abuse ID</td>
+                        <td className='px-6 py-4'>{data.age}</td>
+                        <td className='px-6 py-4'>{data.address}</td>
+                        <td className='px-6 py-4 '>
+                          <button
+                            type='button'
+                            className='font-medium p-2 mr-1 text-white hover:text-indigo-500 bg-[#696BC2]'>
+                            Edit
+                          </button>
+                          <button
+                            type='button'
+                            className='font-medium p-2 mx-1 text-white hover:text-indigo-500 bg-[#FF0000]'>
+                            Delete
+                          </button>
+                        </td>
+                      </tr>
+                    );
+                  })}
               </tbody>
             </table>
           </div>

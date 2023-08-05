@@ -13,11 +13,14 @@ import { Box } from "@chakra-ui/react";
 import { Dashboard } from "../pages/dashboard/Dashboard";
 import { AbuseReport } from "../pages/abuse/AbuseReport";
 import { ChildrenList } from "../pages/children/ChildrenList";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
+import { getData } from "../api/api";
 
 function AdminRoute() {
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
+  const [children, setChildren] = useState([]);
   useEffect(() => {
     const password = "123456";
     const auth = localStorage.getItem("admin");
@@ -26,14 +29,35 @@ function AdminRoute() {
       toast.error("Please Login");
     }
   }, [navigate]);
+
+  const loadChildren = () => {
+    setLoading(true);
+
+    const link = "view/children-list.php";
+    getData(link)
+      .then((res) => {
+        setChildren(res.data);
+        // console.log(children);
+        // setLoading
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+  useEffect(() => {
+    loadChildren();
+  }, []);
   return (
     <div>
       <Box>
         <Navbar />
         <Routes>
-          <Route path='/' element={<Dashboard />} />
+          <Route path='/' element={<Dashboard children={children.length} />} />
           <Route path='/abuse' element={<AbuseReport />} />
-          <Route path='/children' element={<ChildrenList />} />
+          <Route
+            path='/children'
+            element={<ChildrenList children={children} />}
+          />
         </Routes>
       </Box>
     </div>

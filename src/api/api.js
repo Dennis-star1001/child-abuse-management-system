@@ -23,3 +23,7 @@ export const postData = async (url, data) => {
   const request = await axios.post(link, data);
   return request;
 };
+export const getData = async (url) => {
+  let res = await axios.get(`${baseUrl}/${url}`);
+  return res;
+};
