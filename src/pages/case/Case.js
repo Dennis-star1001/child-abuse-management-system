@@ -27,6 +27,7 @@ import { PersonalInfo } from "./components/PersonalChildInfo";
 import { ParentInfo } from "./components/ParentInfo";
 import { Address } from "./components/Address";
 export const Case = ({ cases }) => {
+  console.log("Case",cases)
   const navigate = useNavigate();
   return (
     <Box ml='64' px='5' class='mx-auto max-w-7xl  sm:px-6 lg:px-8'>
@@ -36,7 +37,7 @@ export const Case = ({ cases }) => {
         </Text>
         <Box p={"5"}>
           <SimpleGrid columns={2} gap='5'>
-            {cases.map((item, index) => {
+            {cases && cases.map((item, index) => {
               const { status } = item;
               return (
                 <Box

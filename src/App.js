@@ -7,6 +7,7 @@ import AdminRoute from "./routes/AdminRoute";
 import Registration from "./pages/onboarding/register";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import ClientRoute from "./routes/ClientRoute";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
             <Route path='/' element={<Login />} />
             <Route path='register' element={<Registration />} />
             <Route path='admin/*' element={<AdminRoute />} />
+            <Route path='client/*' element={<ClientRoute />} />
           </Routes>
         </Box>
       </Router>

@@ -15,6 +15,7 @@ import { toast } from "react-toastify";
 import { useState } from "react";
 // import Loading from "./Loading";
 import { useNavigate } from "react-router-dom";
+import { AiOutlineDelete } from "react-icons/ai";
 
 function DeleteModal({ child, loadChildren }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -44,7 +45,7 @@ function DeleteModal({ child, loadChildren }) {
   };
   return (
     <>
-      <Button
+      {/* <Button
         bg={"red.500"}
         color={"white"}
         rounded={0}
@@ -52,14 +53,17 @@ function DeleteModal({ child, loadChildren }) {
         fontSize={"15px"}
         onClick={onOpen}>
         Delete
-      </Button>
+      </Button> */}
+      <Button onClick={onOpen}>
+        <AiOutlineDelete size='20' color='red' />
 
+      </Button>
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
           <ModalHeader>Delete Child ?</ModalHeader>
           <ModalCloseButton />
-          <ModalBody>Are you sure to delete {username} ?</ModalBody>
+          <ModalBody>Are you sure to delete?</ModalBody>
 
           <ModalFooter>
             <Button colorScheme='blue' mr={3} onClick={onClose}>
