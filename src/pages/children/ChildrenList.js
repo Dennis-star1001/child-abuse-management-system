@@ -4,7 +4,7 @@ import { Fragment } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import Form from "./Form";
-import { AiFillEdit, AiFillEye } from "react-icons/ai"
+import { AiFillEdit, AiFillEye } from "react-icons/ai";
 import {
   Table,
   Thead,
@@ -17,13 +17,17 @@ import {
   TableContainer,
   Box,
   Text,
-  Button
-} from '@chakra-ui/react'
+  Button,
+} from "@chakra-ui/react";
 import { Link } from "react-router-dom";
+import { getData } from "../../api/api";
+import DeleteModal from "../../components/DeleteModal";
 // import axios from 'axios'
 
-export const ChildrenList = () => {
+export const ChildrenList = ({ loadChildren, children }) => {
+  // console.log(children, "list");
   const [open, setOpen] = useState(false);
+  // console.log(children);
   return (
     <Box pl='64'>
       <div className='mx-auto max-w-7xl  sm:px-6 lg:px-8 '>
@@ -34,67 +38,29 @@ export const ChildrenList = () => {
             Add Child
           </button>
         </div>
-
         <dt className='text-[#36224b] font-medium py-2'></dt>
         <div className=' rounded-lg border border-[#F2F2F4]  w-full'>
           <div className='relative overflow-x-auto'>
-            <TableContainer>
-              <Table size='sm'>
-                <Thead>
-                  <Tr >
-                    <Th textAlign={'center'}>ID</Th>
-                    <Th textAlign={'center'}>Full Name</Th>
-
-                    <Th textAlign={'center'}>Gender</Th>
-                    <Th textAlign={'center'}>Case Category</Th>
-                    <Th textAlign={'center'}>Status</Th>
-                    <Th textAlign={'center'} >Email Address</Th>
-                    <Th textAlign={'center'}>Action</Th>
-
-                  </Tr>
-                </Thead>
-                <Tbody>
-                  <Tr>
-                    <Td textAlign={'center'}>#1</Td>
-                    <Td textAlign={'center'}>John Dav</Td>
-                    <Td textAlign={'center'}>Male</Td>
-                    <Td textAlign={'center'} >millimetres</Td>
-                    <Td><Text color='white' py='1' borderRadius={'2xl'} textAlign={'center'} bg='green'>Solved</Text></Td>
-
-                    <Td textAlign={'center'}>john@gmail.com</Td>
-                    <Td display={'flex'} gap='2' justifyContent="center" textAlign={'center'}>
-                      <Button>
-
-                        <Link to='/admin/case' ><AiFillEye /></Link>
-                      </Button>
-                     
-                    </Td>
-
-
-                  </Tr>
-                </Tbody>
-              </Table>
-            </TableContainer>
-            {/* <table className='w-full text-sm text-left text-gray-500 dark:text-gray-400'>
+            <table className='w-full text-sm text-left text-gray-500 dark:text-gray-400'>
               <thead className='text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400'>
                 <tr className='border-b  border-[#F3F3F3] bg-[#F9FBFC] '>
                   <th scope='col' className='px-6 py-3 font-medium text-xs'>
                     S/N
                   </th>
                   <th scope='col' className='px-6 py-3 font-medium text-xs'>
-                    Date
+                    Name
                   </th>
                   <th scope='col' className='px-6 py-3 font-medium text-xs'>
-                    Name
+                    Email
                   </th>
                   <th scope='col' className='px-6 py-3 font-medium text-xs'>
                     Abuse ID
                   </th>
                   <th scope='col' className='px-6 py-3 font-medium text-xs'>
-                    State
+                    Age
                   </th>
                   <th scope='col' className='px-6 py-3 font-medium text-xs'>
-                    Country
+                    Address
                   </th>
                   <th scope='col' className='px-6 py-3 font-medium text-xs'>
                     Action
@@ -102,68 +68,37 @@ export const ChildrenList = () => {
                 </tr>
               </thead>
               <tbody>
-                <tr className='bg-white font-medium dark:bg-gray-800 border-b border-[#F3F3F3]'>
-                  <td className='px-6 py-4'>1</td>
-                  <td className='px-6 py-4'>Malcolm Lockyer</td>
-                  <td className='px-6 py-4'>1961</td>
-                  <td className='px-6 py-4'>1961</td>
-                  <td className='px-6 py-4'>1961</td>
-                  <td className='px-6 py-4'>1961</td>
-                  <td className='px-6 py-4 '>
-                    <button
-                      type='button'
-                      className='font-medium p-2 mr-1 text-white hover:text-indigo-500 bg-[#696BC2]'>
-                      Edit
-                    </button>
-                    <button
-                      type='button'
-                      className='font-medium p-2 mx-1 text-white hover:text-indigo-500 bg-[#FF0000]'>
-                      Delete
-                    </button>
-                  </td>
-                </tr>
-                <tr className='font-medium bg-white dark:bg-gray-800 border-b border-[#F3F3F3]'>
-                  <td className='px-6 py-4'>2</td>
-                  <td className='px-6 py-4'>Malcolm Lockyer</td>
-                  <td className='px-6 py-4'>1961</td>
-                  <td className='px-6 py-4'>1961</td>
-                  <td className='px-6 py-4'>1961</td>
-                  <td className='px-6 py-4'>1961</td>
-                  <td className='px-6 py-4 '>
-                    <button
-                      type='button'
-                      className='font-medium p-2 mr-1 text-white hover:text-indigo-500 bg-[#696BC2]'>
-                      Edit
-                    </button>
-                    <button
-                      type='button'
-                      className='font-medium p-2 mx-1 text-white hover:text-indigo-500 bg-[#FF0000]'>
-                      Delete
-                    </button>
-                  </td>
-                </tr>
-                <tr className='font-medium bg-white dark:bg-gray-800 border-b border-[#F3F3F3]'>
-                  <td className='px-6 py-4'>3</td>
-                  <td className='px-6 py-4'>Malcolm Lockyer</td>
-                  <td className='px-6 py-4'>1961</td>
-                  <td className='px-6 py-4'>1961</td>
-                  <td className='px-6 py-4'>1961</td>
-                  <td className='px-6 py-4'>1961</td>
-                  <td className='px-6 py-4 '>
-                    <button
-                      type='button'
-                      className='font-medium p-2 mr-1 text-white hover:text-indigo-500 bg-[#696BC2]'>
-                      Edit
-                    </button>
-                    <button
-                      type='button'
-                      className='font-medium p-2 mx-1 text-white hover:text-indigo-500 bg-[#FF0000]'>
-                      Delete
-                    </button>
-                  </td>
-                </tr>
+                {children &&
+                  children.map((data, index) => {
+                    return (
+                      <tr
+                        key={index}
+                        className='bg-white font-medium dark:bg-gray-800 border-b border-[#F3F3F3]'>
+                        <td className='px-6 py-4'>{data.id}</td>
+                        <td className='px-6 py-4'>
+                          {data.username} {data.lastname}
+                        </td>
+                        <td className='px-6 py-4'>{data.email}</td>
+                        <td className='px-6 py-4'>Abuse ID</td>
+                        <td className='px-6 py-4'>{data.age}</td>
+                        <td className='px-6 py-4'>{data.address}</td>
+                        <td className='px-6 py-4 flex items-center gap-2'>
+                          <button
+                            type='button'
+                            className='font-medium p-2 mr-1 text-white hover:text-indigo-500 bg-[#696BC2]'>
+                            Edit
+                          </button>
+
+                          <DeleteModal
+                            loadChildren={loadChildren}
+                            child={data}
+                          />
+                        </td>
+                      </tr>
+                    );
+                  })}
               </tbody>
-            </table> */}
+            </table>{" "}
           </div>
         </div>
       </div>

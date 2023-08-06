@@ -2,7 +2,7 @@ import axios from "axios";
 
 const url = "http://localhost/child_abuse_management_system_db";
 const baseUrl =
-  "http://localhost/child_abuse_management_system_db";
+  "http://localhost/child_protection_information_management_system_db";
 export const api = async (page, data) => {
   const request = await fetch(`${url}/${page}`, {
     method: "POST",
@@ -22,4 +22,12 @@ export const postData = async (url, data) => {
   let link = `${baseUrl}/${url}`;
   const request = await axios.post(link, data);
   return request;
+};
+export const getData = async (url) => {
+  let res = await axios.get(`${baseUrl}/${url}`);
+  return res;
+};
+export const deleteFunc = (url) => {
+  const res = axios.delete(`${baseUrl}/${url}`);
+  return res;
 };

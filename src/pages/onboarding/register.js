@@ -60,11 +60,16 @@ export default function Registration() {
     } else if (data) {
       try {
         postData(link, formData).then((res) => {
-          toast.success(res.data);
+          if (res.data === "Account already exists") {
+            toast.error(res.data);
+            setLoading(false);
+          } else {
+            toast.success(res.data);
             // console.log(res.data);
-          setData({});
-          navigate("/");
-          setLoading(false);
+            setData({});
+            navigate("/");
+            setLoading(false);
+          }
         });
       } catch (error) {
         toast.error("Network Error");
@@ -223,7 +228,7 @@ export default function Registration() {
             </button>
           </Stack>
           <p className='mt-10 text-center text-sm text-gray-500'>
-           Already have an account?{" "}
+            Already have an account?{" "}
             <Link
               to='/'
               className='font-semibold leading-6 text-indigo-600 hover:text-indigo-500'>
@@ -231,9 +236,7 @@ export default function Registration() {
             </Link>
           </p>
         </Stack>
-        
       </Flex>
-     
     </form>
   );
 }

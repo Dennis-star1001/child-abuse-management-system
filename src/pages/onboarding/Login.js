@@ -28,24 +28,32 @@ export default function Login() {
     formData.append("password", password);
 
     // toast(JSON.stringify(data));
-    if (!password || !email) {
+    if (!data) {
       toast.error("Empty field !");
       setLoading(false);
     } else if (password === "123456" && email === "admin@gmail.com") {
-      toast.dark("Welcome admin");
-      setLoading(false);
-      localStorage.setItem("admin", password);
-      navigate("/admin");
+      setTimeout(function () {
+        // body
+        toast.dark("Welcome admin");
+        setLoading(false);
+        localStorage.setItem("admin", password);
+        navigate("/admin");
+      }, 2000);
     } else {
       try {
-        postData(link, formData).then((res) => {
-          toast.dark(res.data);
-          //   console.log(res.data);
-          setData({});
-          // navigate("/admin"); navigate to child dashboard
-          localStorage.setItem("email", email);
-          setLoading(false);
-        });
+        postData(link, formData)
+          .then((res) => {
+            toast.dark(res.data);
+            //   console.log(res.data);
+            setData({});
+            // navigate("/admin"); navigate to child dashboard
+            localStorage.setItem("email", email);
+            setLoading(false);
+          })
+          .catch((err) => {
+            setLoading(false);
+            toast.error("Network Error" + err);
+          });
       } catch (error) {
         toast.error("Network Error");
         setLoading(false);
