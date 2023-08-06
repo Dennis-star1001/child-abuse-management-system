@@ -54,7 +54,7 @@ function AdminRoute() {
         <Navbar />
         <Routes>
           <Route path='/' element={<Dashboard children={children.length} />} />
-          <Route path='/abuse' element={<AbuseReport />} />
+          {/* <Route path='/abuse' element={<AbuseReport />} /> */}
           <Route
             path='/children'
             element={<ChildrenList children={children} />}
