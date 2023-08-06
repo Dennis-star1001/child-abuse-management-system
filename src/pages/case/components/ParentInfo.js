@@ -1,5 +1,6 @@
 import { Box, Button, Flex, SimpleGrid, Text } from '@chakra-ui/react'
 import React from 'react'
+import ParentInformation from './modals/EditParentInformation'
 
 export const ParentInfo = () => {
   return (
@@ -28,7 +29,7 @@ export const ParentInfo = () => {
                 <Text fontWeight={'medium'}>Student</Text>
             </Box>
         </SimpleGrid>
-        <Button>Edit</Button>
+       <ParentInformation/>
     </Flex>
 </Flex>
   )
