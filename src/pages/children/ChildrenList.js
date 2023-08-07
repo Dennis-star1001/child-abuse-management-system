@@ -4,7 +4,7 @@ import { Fragment } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import Form from "./Form";
-import { AiFillEdit, AiFillEye } from "react-icons/ai";
+import { AiFillEdit, AiFillEye, AiOutlineEye } from "react-icons/ai";
 import {
   Table,
   Thead,
@@ -19,24 +19,26 @@ import {
   Text,
   Button,
 } from "@chakra-ui/react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { getData } from "../../api/api";
 import DeleteModal from "../../components/DeleteModal";
+import EditChild from "./EditChild";
 // import axios from 'axios'
 
 export const ChildrenList = ({ loadChildren, children }) => {
   // console.log(children, "list");
+  const navigate = useNavigate();
   const [open, setOpen] = useState(false);
   // console.log(children);
   return (
     <Box pl='64'>
       <div className='mx-auto max-w-7xl  sm:px-6 lg:px-8 '>
         <div className='flex justify-end'>
-          <button
+          {/* <button
             className='bg-[#696BC2] text-white px-5 py-2 '
             onClick={() => setOpen(true)}>
             Add Child
-          </button>
+          </button> */}
         </div>
         <dt className='text-[#36224b] font-medium py-2'></dt>
         <div className=' rounded-lg border border-[#F2F2F4]  w-full'>
@@ -83,16 +85,15 @@ export const ChildrenList = ({ loadChildren, children }) => {
                         <td className='px-6 py-4'>{data.age}</td>
                         <td className='px-6 py-4'>{data.address}</td>
                         <td className='px-6 py-4 flex items-center gap-2'>
-                          <button
-                            type='button'
-                            className='font-medium p-2 mr-1 text-white hover:text-indigo-500 bg-[#696BC2]'>
-                            Edit
-                          </button>
+                          {/* <EditChild/> */}
 
                           <DeleteModal
                             loadChildren={loadChildren}
                             child={data}
                           />
+                          <Button onClick={()=>{navigate("/admin/child-profile/1")}}>
+                            <AiOutlineEye color="green" size='24' />
+                          </Button>
                         </td>
                       </tr>
                     );

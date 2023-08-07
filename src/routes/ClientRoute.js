@@ -7,7 +7,7 @@ import {
   useNavigate,
 } from "react-router-dom";
 
-import Navbar from "../components/navbar/navbar";
+import Navbar from "../components/navbar/ClientNavbar";
 
 import { Box } from "@chakra-ui/react";
 import { Dashboard } from "../pages/dashboard/Dashboard";
@@ -20,14 +20,14 @@ import { Profile } from "../pages/profile/Profile";
 import { ProfileOfChild } from "../pages/case/ProfileOfChild";
 import { Case } from "../pages/case/Case";
 
-function AdminRoute() {
+function ClientRoute() {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [children, setChildren] = useState([]);
   const [cases, setCase] = useState([]);
   useEffect(() => {
-    const password = "123456";
-    const auth = localStorage.getItem("admin");
+    const password = "1234567";
+    const auth = localStorage.getItem("client");
     if (auth !== password) {
       navigate("/");
       toast.error("Please Login");
@@ -70,12 +70,12 @@ function AdminRoute() {
             element={<Dashboard cases={cases} children={children.length} />}
           />
           {/* <Route path='/abuse' element={<AbuseReport />} /> */}
-          <Route
+          {/* <Route
             path='/children'
             element={
               <ChildrenList loadChildren={loadChildren} children={children} />
             }
-          />
+          /> */}
           <Route path='/' element={<Dashboard />} />
           <Route path='/profile' element={<Profile />} />
           <Route path='/case' element={<Case cases={cases} />} />
@@ -90,4 +90,4 @@ function AdminRoute() {
   );
 }
 
-export default AdminRoute;
+export default ClientRoute;

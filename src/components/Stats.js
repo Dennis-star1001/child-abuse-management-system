@@ -1,3 +1,4 @@
+import { Table, Tbody, Td, Th, Thead, Tr } from "@chakra-ui/react";
 import { CgHello } from "react-icons/cg";
 import { HiOutlineDocumentReport } from "react-icons/hi";
 import { MdGppBad, MdPendingActions } from "react-icons/md";
@@ -5,6 +6,8 @@ import { VscPerson } from "react-icons/vsc";
 // FF0000
 
 export default function Stats({ children, cases }) {
+
+  let colorScheme
   const stats = [
     {
       id: 1,
@@ -14,7 +17,7 @@ export default function Stats({ children, cases }) {
     },
     {
       id: 2,
-      name: "Abuse",
+      name: "Pending",
       value: "119",
       icon: <MdGppBad size='24' color='#F93939' />,
     },
@@ -57,7 +60,7 @@ export default function Stats({ children, cases }) {
           ))}
         </dl>
         <div className='mt-10'>
-          <dt class='text-[#6C6573] font-medium py-2'>Abuse Cases</dt>
+          <dt class='text-[#6C6573] font-medium py-2'>Cases</dt>
           <div className=' rounded-lg border border-[#F2F2F4] h-40 w-full'>
             {/* <table class="relative overflow-x-auto">
                         <thead>
@@ -89,72 +92,62 @@ export default function Stats({ children, cases }) {
                     </table> */}
 
             <div class='relative overflow-x-auto'>
-              <table class='w-full text-sm text-left text-gray-500 dark:text-gray-400'>
-                <thead class='text-xs text-[#6C6573]  uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400'>
-                  <tr className='border-b  border-[#F3F3F3] bg-[#F9FBFC] '>
-                    <th scope='col' class='px-6 py-3 font-medium text-xs'>
+              <Table class='w-full text-sm text-left text-gray-500 dark:text-gray-400'>
+                <Thead class='text-xs text-[#6C6573]  uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400'>
+                  <Tr className='border-b  border-[#F3F3F3] bg-[#F9FBFC] '>
+                    <Th scope='col' class='px-6 py-3 font-medium text-xs'>
                       S/N
-                    </th>
-                    <th scope='col' class='px-6 py-3 font-medium text-xs'>
+                    </Th>
+                    <Th scope='col' class='px-6 py-3 font-medium text-xs'>
+                      User id
+                    </Th>
+                    <Th scope='col' class='px-6 py-3 font-medium text-xs'>
+                      Case id
+                    </Th>
+                    <Th scope='col' class='px-6 py-3 font-medium text-xs'>
+                      Name
+                    </Th>
+                    <Th scope='col' class='px-6 py-3 font-medium text-xs'>
+                      Case Type
+                    </Th>
+                    <Th scope='col' class='px-6 py-3 font-medium text-xs'>
+                      Time
+                    </Th>
+                    <Th scope='col' class='px-6 py-3 font-medium text-xs'>
                       Date
-                    </th>
-                    <th scope='col' class='px-6 py-3 font-medium text-xs'>
-                      Abuse Type
-                    </th>
-                    <th scope='col' class='px-6 py-3 font-medium text-xs'>
-                      Abuse ID
-                    </th>
-                    <th scope='col' class='px-6 py-3 font-medium text-xs'>
-                      Abuse Name
-                    </th>
-                    <th scope='col' class='px-6 py-3 font-medium text-xs'>
-                      Reporter
-                    </th>
-                    <th scope='col' class='px-6 py-3 font-medium text-xs'>
-                      Reported To
-                    </th>
-                    <th scope='col' class='px-6 py-3 font-medium text-xs'>
-                      Status
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr className='bg-white font-medium dark:bg-gray-800 border-b border-[#F3F3F3]'>
-                    <td class='px-6 py-4'>1</td>
-                    <td class='px-6 py-4'>Malcolm Lockyer</td>
-                    <td class='px-6 py-4'>1961</td>
-                    <td class='px-6 py-4'>1961</td>
-                    <td class='px-6 py-4'>1961</td>
-                    <td class='px-6 py-4'>1961</td>
-                    <td class='px-6 py-4'>1961</td>
-                    <td class='px-6 py-4'>Solved</td>
-                  </tr>
-                  <tr class='font-medium bg-white dark:bg-gray-800 border-b border-[#F3F3F3]'>
-                    <td class='px-6 py-4'>2</td>
-                    <td class='px-6 py-4'>Malcolm Lockyer</td>
-                    <td class='px-6 py-4'>1961</td>
-                    <td class='px-6 py-4'>1961</td>
-                    <td class='px-6 py-4'>1961</td>
-                    <td class='px-6 py-4'>1961</td>
-                    <td class='px-6 py-4'>1961</td>
-                    <td class='px-6 py-4'>Pending</td>
-                  </tr>
-                  <tr class='font-medium bg-white dark:bg-gray-800 border-b border-[#F3F3F3]'>
-                    <td class='px-6 py-4'>3</td>
-                    <td class='px-6 py-4'>Malcolm Lockyer</td>
-                    <td class='px-6 py-4'>1961</td>
-                    <td class='px-6 py-4'>1961</td>
-                    <td class='px-6 py-4'>1961</td>
-                    <td class='px-6 py-4'>1961</td>
-                    <td class='px-6 py-4'>1961</td>
-                    <td class='px-6 py-4'>Pending</td>
-                  </tr>
-                </tbody>
-              </table>
+                    </Th>
+                    <Th scope='col' class='px-6 py-3 font-medium text-xs'>
+                      Location
+                    </Th>
+                    <Th scope='col' class='px-6 py-3 font-medium text-xs'>
+                      Case Status
+                    </Th>
+                  </Tr>
+                </Thead>
+                <Tbody>
+                  {cases && cases.map((data, index) => {
+                    return (
+
+                      <Tr className='bg-white font-medium dark:bg-gray-800 border-b border-[#F3F3F3]'>
+                        <Td class='px-6 py-4'>{data.id}</Td>
+                        <Td class='px-6 py-4'>{data.user_id}</Td>
+                        <Td class='px-6 py-4'>{data.case_id}</Td>
+                        <Td class='px-6 py-4'>{data.name}</Td>
+                        <Td class='px-6 py-4'>{data.type}</Td>
+                        <Td class='px-6 py-4'>{data.time}</Td>
+                        <Td class='px-6 py-4'>{data.date}</Td>
+                        <Td class='px-6 py-4'>{data.location}</Td>
+
+                        <Td bg={data.case_status === 'Pending' ? '#FFCC00' : data.case_status === 'Resolved' ? '#008000' : 'red'} color='white' textAlign={'center'}  >{data.case_status}</Td>
+                      </Tr>
+                    )
+                  })}
+                </Tbody>
+              </Table>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </div >
   );
 }
