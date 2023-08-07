@@ -41,7 +41,7 @@ export default function Stats({ children, cases }) {
         <dl className='grid grid-cols-1 gap-x-8 gap-y-16 lg:grid-cols-4 '>
           {stats.map((stat) => (
             <div>
-              <div className='flex-auto w-52 flex align-center rounded-sm border border-[#F2F2F4] bg-white p-5 shadow'>
+              <div className='flex-auto w-52 flex align-center rounded-sm border border-[#F2F2F4] border-2 bg-white p-5 '>
                 <div className=' h-fit w-fit bg-[#EDF2FE] rounded-xl p-1'>
                   {stat.icon}
                 </div>

@@ -7,30 +7,30 @@ export const PersonalInfo = ({ data }) => {
         <Flex flexDirection={'column'} my='10' borderRadius={'2xl'} border='1px solid #E2E8F0' gap='2' p='7'>
             <Text fontWeight={'medium'}>Personal Information</Text>
             <Flex justifyContent={'space-between'}>
-                {data &&(
+               
                     <SimpleGrid pt='5' columns={2} spacing={10} w='2xl'>
                         <Box>
                             <Text color={'#A5AEBB'} fontSize={'sm'}>First Name</Text>
-                            <Text fontWeight={'medium'}>{data.firstname} </Text>
+                            <Text fontWeight={'medium'}> </Text>
                         </Box>
                         <Box>
                             <Text color={'#A5AEBB'} fontSize={'sm'}>Last Name</Text>
-                            <Text fontWeight={'medium'}>{data.lastname} </Text>
+                            <Text fontWeight={'medium'}> </Text>
                         </Box>
                         <Box>
                             <Text color={'#A5AEBB'} fontSize={'sm'}>Email Address</Text>
-                            <Text fontWeight={'medium'}>{data.email}</Text>
+                            <Text fontWeight={'medium'}></Text>
                         </Box>
                         <Box>
                             <Text color={'#A5AEBB'} fontSize={'sm'}>Phone</Text>
-                            <Text fontWeight={'medium'}>{data.phone}</Text>
+                            <Text fontWeight={'medium'}></Text>
                         </Box>
                         <Box>
                             <Text color={'#A5AEBB'} fontSize={'sm'}>Bio</Text>
-                            <Text fontWeight={'medium'}>{data.bio}</Text>
+                            <Text fontWeight={'medium'}></Text>
                         </Box>
                     </SimpleGrid>
-                )}
+               
                 <PersonalInformation />
             </Flex>
         </Flex>

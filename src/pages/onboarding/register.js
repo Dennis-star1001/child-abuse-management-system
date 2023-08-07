@@ -27,15 +27,23 @@ export default function Registration() {
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState({
     // img: "",
-    username: "",
+    firstname: "",
     lastname: "",
     email: "",
     gender: "",
     password: "",
     age: "",
     address: "",
+    phone: "",
+    country: "",
+    citystate: "",
+    postal_code: "",
+    home_address: "",
+    gurdian_address: "",
+    school_address: "",
+    bio: ""
   });
-  const { username, lastname, address, email, gender, password, age } = data;
+  const { firstname, lastname, address, email, gender, password, age, phone, bio, country, citystate, postal_code, home_address, gurdian_address, school_address } = data;
   const handleChange = (e) => {
     const { name, value } = e.target;
     setData((prevData) => ({ ...prevData, [name]: value }));
@@ -45,13 +53,21 @@ export default function Registration() {
     setLoading(true);
     const formData = new FormData();
     const link = "controller/auth/sign-up.php";
-    formData.append("username", username);
+    formData.append("firstname", firstname);
     formData.append("lastname", lastname);
     formData.append("email", email);
     formData.append("address", address);
     formData.append("age", age);
     formData.append("gender", gender);
     formData.append("password", password);
+    formData.append("phone", phone);
+    formData.append("bio", bio);
+    formData.append("country", country);
+    formData.append("citystate", citystate);
+    formData.append("postal_code", postal_code);
+    formData.append("home_address", home_address);
+    formData.append("gurdian_address", gurdian_address);
+    formData.append("school_address", school_address);
 
     // toast(JSON.stringify(data));
     if (password !== conPass) {
@@ -118,16 +134,16 @@ export default function Registration() {
               </Center>
             </Stack>
           </FormControl>
-          <SimpleGrid columns={2} spacing={10}>
+          <SimpleGrid columns={1} spacing={10}>
             <FormControl isRequired>
               <FormLabel>First name</FormLabel>
               <Input
                 placeholder='First Name'
                 _placeholder={{ color: "gray.500" }}
                 type='text'
-                name='username'
+                name='firstname'
                 onChange={handleChange}
-                value={username}
+                value={firstname}
               />
             </FormControl>
             <FormControl isRequired>
@@ -150,17 +166,6 @@ export default function Registration() {
                 name='email'
                 onChange={handleChange}
                 value={email}
-              />
-            </FormControl>
-            <FormControl isRequired>
-              <FormLabel>Address</FormLabel>
-              <Input
-                placeholder='Address'
-                _placeholder={{ color: "gray.500" }}
-                type='text'
-                name='address'
-                onChange={handleChange}
-                value={address}
               />
             </FormControl>
             <FormControl isRequired>
@@ -192,6 +197,100 @@ export default function Registration() {
                 value={age}
               />
             </FormControl>
+
+            <FormControl isRequired>
+              <FormLabel>Phone</FormLabel>
+              <Input
+                placeholder='Phone'
+                _placeholder={{ color: "gray.500" }}
+                type="number"
+                name='phone'
+                onChange={handleChange}
+                value={phone}
+              />
+            </FormControl>
+            <FormControl isRequired>
+              <FormLabel>Country</FormLabel>
+              <Input
+                placeholder='Country'
+                _placeholder={{ color: "gray.500" }}
+                name='country'
+                onChange={handleChange}
+                value={country}
+              />
+            </FormControl>
+            <FormControl isRequired>
+              <FormLabel>City/State</FormLabel>
+              <Input
+                placeholder='City/State'
+                _placeholder={{ color: "gray.500" }}
+                name='citystate'
+                onChange={handleChange}
+                value={citystate}
+              />
+            </FormControl>
+            <FormControl isRequired>
+              <FormLabel>Postal Code</FormLabel>
+              <Input
+                placeholder='Postal Code'
+                _placeholder={{ color: "gray.500" }}
+                name='postal_code'
+                onChange={handleChange}
+                value={postal_code}
+              />
+            </FormControl>
+            <FormControl isRequired>
+              <FormLabel>Home Address</FormLabel>
+              <Input
+                placeholder='Home Address'
+                _placeholder={{ color: "gray.500" }}
+                name='home_address'
+                onChange={handleChange}
+                value={home_address}
+              />
+            </FormControl>
+            <FormControl isRequired>
+              <FormLabel>School Address</FormLabel>
+              <Input
+                placeholder='School Address'
+                _placeholder={{ color: "gray.500" }}
+                name='school_address'
+                onChange={handleChange}
+                value={school_address}
+              />
+            </FormControl>
+            <FormControl isRequired>
+              <FormLabel>Bio</FormLabel>
+              <Input
+                placeholder='Bio'
+                _placeholder={{ color: "gray.500" }}
+                name='bio'
+                onChange={handleChange}
+                value={bio}
+              />
+            </FormControl>
+            <FormControl isRequired>
+              <FormLabel>Gurdian Address</FormLabel>
+              <Input
+                placeholder='Gurdian Address'
+                _placeholder={{ color: "gray.500" }}
+                name='gurdian_address'
+                onChange={handleChange}
+                value={gurdian_address}
+                
+              />
+            </FormControl>
+            <FormControl isRequired>
+              <FormLabel>Address</FormLabel>
+              <Input
+                placeholder='Address'
+                _placeholder={{ color: "gray.500" }}
+                type='text'
+                name='address'
+                onChange={handleChange}
+                value={address}
+              />
+            </FormControl>
             <FormControl isRequired>
               <FormLabel>Password</FormLabel>
               <Input
@@ -213,6 +312,7 @@ export default function Registration() {
                 value={conPass}
               />
             </FormControl>
+
           </SimpleGrid>
           <Stack spacing={6} direction={["column", "row"]}>
             <button
