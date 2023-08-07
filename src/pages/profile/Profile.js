@@ -3,8 +3,8 @@ import React from 'react'
 
 import { Link } from 'react-router-dom'
 import { AiFillEdit, AiFillEye } from 'react-icons/ai'
-import { PersonalInfo } from '../case/components/PersonalChildInfo'
-import { Address } from '../case/components/Address'
+import { PersonalInfo } from './components/PersonalChildInfo'
+import { Address } from './components/Address'
 
 export const Profile = () => {
   return (

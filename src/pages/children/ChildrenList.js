@@ -91,7 +91,7 @@ export const ChildrenList = ({ loadChildren, children }) => {
                             loadChildren={loadChildren}
                             child={data}
                           />
-                          <Button onClick={()=>{navigate("/admin/child-profile/1")}}>
+                          <Button onClick={()=>{navigate(`/admin/child-profile/${data.id}`)}}>
                             <AiOutlineEye color="green" size='24' />
                           </Button>
                         </td>
