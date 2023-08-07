@@ -21,9 +21,11 @@ import {
 } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import { getData } from "../../api/api";
+import DeleteModal from "../../components/DeleteModal";
 // import axios from 'axios'
 
-export const ChildrenList = ({ children }) => {
+export const ChildrenList = ({ loadChildren, children }) => {
+  // console.log(children, "list");
   const [open, setOpen] = useState(false);
   // console.log(children);
   return (
@@ -36,7 +38,6 @@ export const ChildrenList = ({ children }) => {
             Add Child
           </button>
         </div>
-
         <dt className='text-[#36224b] font-medium py-2'></dt>
         <div className=' rounded-lg border border-[#F2F2F4]  w-full'>
           <div className='relative overflow-x-auto'>
@@ -81,17 +82,17 @@ export const ChildrenList = ({ children }) => {
                         <td className='px-6 py-4'>Abuse ID</td>
                         <td className='px-6 py-4'>{data.age}</td>
                         <td className='px-6 py-4'>{data.address}</td>
-                        <td className='px-6 py-4 '>
+                        <td className='px-6 py-4 flex items-center gap-2'>
                           <button
                             type='button'
                             className='font-medium p-2 mr-1 text-white hover:text-indigo-500 bg-[#696BC2]'>
                             Edit
                           </button>
-                          <button
-                            type='button'
-                            className='font-medium p-2 mx-1 text-white hover:text-indigo-500 bg-[#FF0000]'>
-                            Delete
-                          </button>
+
+                          <DeleteModal
+                            loadChildren={loadChildren}
+                            child={data}
+                          />
                         </td>
                       </tr>
                     );

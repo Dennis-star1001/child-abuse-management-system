@@ -4,7 +4,7 @@ import { MdGppBad, MdPendingActions } from "react-icons/md";
 import { VscPerson } from "react-icons/vsc";
 // FF0000
 
-export default function Stats({ children }) {
+export default function Stats({ children, cases }) {
   const stats = [
     {
       id: 1,
@@ -21,7 +21,7 @@ export default function Stats({ children }) {
     {
       id: 3,
       name: "Cases",
-      value: "46,000",
+      value: cases.length,
       icon: <MdPendingActions size='24' color='#FFCC00' />,
     },
     {
