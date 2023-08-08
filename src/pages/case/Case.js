@@ -29,6 +29,7 @@ import { Address } from "./components/Address";
 export const Case = ({ cases }) => {
   console.log("Case",cases)
   const navigate = useNavigate();
+
   return (
     <Box ml='64' px='5' class='mx-auto max-w-7xl  sm:px-6 lg:px-8'>
       <Box mt='5'>

@@ -25,9 +25,8 @@ function AdminRoute() {
   const [loading, setLoading] = useState(false);
   const [children, setChildren] = useState([]);
   const [cases, setCase] = useState([]);
- 
+
   useEffect(() => {
-    
     const password = "123456";
     const auth = localStorage.getItem("admin");
     if (auth !== password) {
@@ -42,9 +41,11 @@ function AdminRoute() {
     getData(link)
       .then((res) => {
         setChildren(res.data);
+        console.log(res.data, "test");
       })
       .catch((err) => {
         console.log(err);
+        toast.error(err);
       });
   };
   const loadCases = () => {
@@ -56,6 +57,7 @@ function AdminRoute() {
       })
       .catch((err) => {
         console.log(err);
+        toast.error(err);
       });
   };
   useEffect(() => {
@@ -86,7 +88,10 @@ function AdminRoute() {
             path='/children'
             element={<ChildrenList reload={children} children={[]} />}
           /> */}
-          <Route path='/child-profile/:id' element={<ProfileOfChild children={children} />} />
+          <Route
+            path='/child-profile/:id'
+            element={<ProfileOfChild children={children} />}
+          />
         </Routes>
       </Box>
     </div>
