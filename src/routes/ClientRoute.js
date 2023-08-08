@@ -26,9 +26,8 @@ function ClientRoute() {
   const [children, setChildren] = useState([]);
   const [cases, setCase] = useState([]);
   useEffect(() => {
-    const password = "1234567";
     const auth = localStorage.getItem("client");
-    if (auth !== password) {
+    if (!auth) {
       navigate("/");
       toast.error("Please Login");
     }

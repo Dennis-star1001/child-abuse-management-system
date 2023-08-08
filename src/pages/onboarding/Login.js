@@ -43,12 +43,14 @@ export default function Login() {
       try {
         postData(link, formData)
           .then((res) => {
-            toast.dark(res.data);
-            //   console.log(res.data);
-            setData({});
-            // navigate("/admin"); navigate to child dashboard
-            localStorage.setItem("email", email);
-            setLoading(false);
+            if (res.data === "client") {
+              toast.dark(`Successfully login`);
+              //   console.log(res.data);
+              setData({});
+              navigate(`/${res.data}`);
+              localStorage.setItem("client", email);
+              setLoading(false);
+            }
           })
           .catch((err) => {
             setLoading(false);
