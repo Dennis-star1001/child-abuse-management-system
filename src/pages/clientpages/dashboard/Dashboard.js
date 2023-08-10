@@ -1,31 +1,57 @@
 import React from "react";
 import { Box, Table, Tbody, Td, Th, Thead, Tr } from "@chakra-ui/react";
+import { VscPerson } from "react-icons/vsc";
+import { MdGppBad, MdPendingActions } from "react-icons/md";
+import { HiOutlineDocumentReport } from "react-icons/hi";
 export const Dashboard = ({ children, cases }) => {
+    const stats = [
+        
+        {
+          id: 2,
+          name: "Pending",
+          value: "119",
+          icon: <MdGppBad size='24' color='#F93939' />,
+        },
+        {
+          id: 3,
+          name: "Cases",
+          value: cases.length,
+          icon: <MdPendingActions size='24' color='#FFCC00' />,
+        },
+        {
+          id: 4,
+          name: "Resolved",
+          value: "46,000",
+          icon: <HiOutlineDocumentReport size='24' color='green' />,
+        },
+      ];
   return (
     <Box>
       <Box pl='64' class='mx-auto max-w-7xl  sm:px-6 lg:px-8'>
       <div class='bg-primary py-24 sm:py-1 '>
       <div className='mx-auto max-w-7xl px-6 lg:px-8 '>
         <dt class='text-[#6C6573] font-medium py-2'>Summary</dt>
-        <dl className='grid grid-cols-1 gap-x-8 gap-y-16 lg:grid-cols-4 '>
+        <dl className='grid grid-cols-1 gap-x-8 gap-y-16 lg:grid-cols-3 '>
          
+        {stats.map((stat) => (
             <div>
               <div className='flex-auto w-52 flex align-center rounded-sm border border-[#F2F2F4] border-2 bg-white p-5 '>
                 <div className=' h-fit w-fit bg-[#EDF2FE] rounded-xl p-1'>
-                 svvsv
+                  {stat.icon}
                 </div>
                 <div
-                 
+                  key={stat.id}
                   className='mx-3 flex max-w-xs flex-col gap-y-2 '>
                   <dt className='text-base leading-4 font-normal  text-[#A5A1A7] '>
-                   sdcsdvs
+                    {stat.name}
                   </dt>
                   <dd className='text-4xl font-semibold tracking-tight text-dark sm:text-2xl'>
-                  sdvsdv
+                    {stat.value}
                   </dd>
                 </div>
               </div>
             </div>
+          ))}
         
         </dl>
         <div className='mt-10'>

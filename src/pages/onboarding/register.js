@@ -29,6 +29,10 @@ export default function Registration() {
     // img: "",
     firstname: "",
     lastname: "",
+    gurdian_first_name: "",
+    gurdian_last_name: "",
+    gurdian_phone: "",
+    gurdian_email: "",
     email: "",
     gender: "",
     password: "",
@@ -43,7 +47,7 @@ export default function Registration() {
     school_address: "",
     bio: ""
   });
-  const { firstname, lastname, address, email, gender, password, age, phone, bio, country, citystate, postal_code, home_address, gurdian_address, school_address } = data;
+  const { firstname, lastname, address, email, gender, password, age, phone, bio, country, citystate, postal_code, home_address, gurdian_address, school_address, gurdian_first_name, gurdian_last_name, gurdian_email, gurdian_phone} = data;
   const handleChange = (e) => {
     const { name, value } = e.target;
     setData((prevData) => ({ ...prevData, [name]: value }));
@@ -67,6 +71,10 @@ export default function Registration() {
     formData.append("postal_code", postal_code);
     formData.append("home_address", home_address);
     formData.append("gurdian_address", gurdian_address);
+    formData.append("gurdian_first_name", gurdian_first_name);
+    formData.append("gurdian_last_name", gurdian_last_name);
+    formData.append("gurdian_email", gurdian_email);
+    formData.append("gurdian_phone", gurdian_phone);
     formData.append("school_address", school_address);
 
     // toast(JSON.stringify(data));
@@ -104,15 +112,17 @@ export default function Registration() {
         <Stack
           spacing={4}
           w={"full"}
-          maxW={"xl"}
+          maxW={"4xl"}
           bg={useColorModeValue("white", "gray.700")}
           rounded={"xl"}
-          boxShadow={"lg"}
+         
           p={6}
           my={12}>
           <Heading lineHeight={1.1} fontSize={{ base: "2xl", sm: "3xl" }}>
             Register
           </Heading>
+        
+          <SimpleGrid alignItems={'center'} columns={{base:'1',md:2}} spacing={10}>
           <FormControl>
             <FormLabel>User Icon</FormLabel>
             <Stack direction={["column", "row"]} spacing={6}>
@@ -134,7 +144,6 @@ export default function Registration() {
               </Center>
             </Stack>
           </FormControl>
-          <SimpleGrid columns={1} spacing={10}>
             <FormControl isRequired>
               <FormLabel>First name</FormLabel>
               <Input
@@ -220,6 +229,47 @@ export default function Registration() {
               />
             </FormControl>
             <FormControl isRequired>
+              <FormLabel>Gurdian First Name</FormLabel>
+              <Input
+                placeholder='Gurdian/Parent First Name'
+                _placeholder={{ color: "gray.500" }}
+                name='gurdian_first_name'
+                onChange={handleChange}
+                value={gurdian_first_name}
+              />
+            </FormControl>
+            <FormControl isRequired>
+              <FormLabel>Gurdian Last Name</FormLabel>
+              <Input
+                placeholder='Gurdian/Parent Last Name'
+                _placeholder={{ color: "gray.500" }}
+                name='gurdian_first_name'
+                onChange={handleChange}
+                value={gurdian_last_name}
+              />
+            </FormControl>
+            <FormControl isRequired>
+              <FormLabel>Gurdian Email</FormLabel>
+              <Input
+                placeholder='Gurdian/Parent Email'
+                _placeholder={{ color: "gray.500" }}
+                name='gurdian_email'
+                onChange={handleChange}
+                value={gurdian_email}
+              />
+            </FormControl>
+            <FormControl isRequired>
+              <FormLabel>Gurdian Phone number</FormLabel>
+              <Input
+                placeholder='Gurdian/Parent Phone number'
+                _placeholder={{ color: "gray.500" }}
+                name='gurdian_phone_number'
+                onChange={handleChange}
+                value={gurdian_phone}
+              />
+            </FormControl>
+            
+            <FormControl isRequired>
               <FormLabel>City/State</FormLabel>
               <Input
                 placeholder='City/State'
@@ -277,7 +327,7 @@ export default function Registration() {
                 name='gurdian_address'
                 onChange={handleChange}
                 value={gurdian_address}
-                
+
               />
             </FormControl>
             <FormControl isRequired>
@@ -314,17 +364,18 @@ export default function Registration() {
             </FormControl>
 
           </SimpleGrid>
-          <Stack spacing={6} direction={["column", "row"]}>
+          <Stack pt='10' spacing={6} justifyContent={'center'} direction={["column", "row"]}>
             <button
+            
               type='submit'
-              className='flex w-full justify-center rounded-md bg-[#696BC2] px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'>
+              className='flex px-14 w-fit-content justify-center rounded-md bg-[#696BC2] px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'>
               Cancel
             </button>
 
             <button
               type='submit'
-              className='flex w-full justify-center rounded-md bg-[#696BC2] px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'>
-              {loading ? <Spinner /> : "Submit"}
+              className='flex px-14 w-fit-content justify-center rounded-md bg-[#696BC2] px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'>
+              {loading ? <Spinner /> : "Save"}
             </button>
           </Stack>
           <p className='mt-10 text-center text-sm text-gray-500'>
