@@ -10,15 +10,15 @@ import {
 import Navbar from "../components/navbar/ClientNavbar";
 
 import { Box } from "@chakra-ui/react";
-import { Dashboard } from "../pages/dashboard/Dashboard";
-import { ChildrenList } from "../pages/children/ChildrenList";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { getData } from "../api/api";
-import { Profile } from "../pages/profile/Profile";
+import { Dashboard } from "../pages/clientpages/dashboard/Dashboard";
+import { ProfileOfChild, ViewCase } from "../pages/clientpages/case/ViewCase";
+import { CaseDetails } from "../pages/clientpages/case/components/CaseDetails";
+import { Profile } from "../pages/clientpages/profile/Profile";
+import { Case } from "../pages/clientpages/case/Case";
 // import { Case } from "../pages/case/Case";
-import { ProfileOfChild } from "../pages/case/ProfileOfChild";
-import { Case } from "../pages/case/Case";
 
 function ClientRoute() {
   const navigate = useNavigate();
@@ -75,14 +75,10 @@ function ClientRoute() {
               <ChildrenList loadChildren={loadChildren} children={children} />
             }
           /> */}
-          <Route path='/' element={<Dashboard />} />
           <Route path='/profile' element={<Profile />} />
           <Route path='/case' element={<Case cases={cases} />} />
-          {/* <Route
-            path='/children'
-            element={<ChildrenList reload={children} children={[]} />}
-          /> */}
-          <Route path='/child-profile/:id' element={<ProfileOfChild />} />
+          <Route path='/case/child-case/:id' element={<ViewCase cases={cases} />} />
+          
         </Routes>
       </Box>
     </div>
