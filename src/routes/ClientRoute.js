@@ -25,7 +25,7 @@ function ClientRoute() {
   const [loading, setLoading] = useState(false);
   const [children, setChildren] = useState([]);
   const [cases, setCase] = useState([]);
-  const [client, setClient] = useState();
+  const [client, setClient] = useState([]);
   useEffect(() => {
     const auth = localStorage.getItem("client");
     if (!auth) {
@@ -41,6 +41,7 @@ function ClientRoute() {
       getData(url)
         .then((res) => {
           setClient(res.data);
+          // console.log(res.data, "response");
         })
         .catch((err) => {
           toast.error("error !!!");
@@ -50,9 +51,28 @@ function ClientRoute() {
       toast("error please logout!!!");
     }
   };
+  const loadCases = () => {
+    const email = localStorage.getItem("client");
+    if (email) {
+      const url = `view/view-client-case.php?email=${email}`;
+      getData(url)
+        .then((res) => {
+          setCase(res.data);
+          // console.log(res.data, "dartrrt");
+        })
+        .catch((err) => {
+          toast.error("error !!!");
+        });
+    } else {
+      // navigate("/");
+      toast("error please logout!!!");
+    }
+  };
+  const data = client[0];
 
   useEffect(() => {
     loadProfile();
+    loadCases();
   }, []);
   return (
     <div>
@@ -70,10 +90,21 @@ function ClientRoute() {
               <ChildrenList loadChildren={loadChildren} children={children} />
             }
           /> */}
-          <Route path='/profile' element={<Profile />} />
-          <Route path='/case' element={<Case cases={cases} />} />
-          <Route path='/case/child-case/:id' element={<ViewCase cases={cases} />} />
-          
+          <Route path='/profile' element={<Profile data={data} />} />
+          <Route
+            path='/case'
+            element={
+              <Case
+                loadCases={loadCases}
+                name={data && data.firstname}
+                cases={cases}
+              />
+            }
+          />
+          <Route
+            path='/case/child-case/:id'
+            element={<ViewCase cases={cases} />}
+          />
         </Routes>
       </Box>
     </div>

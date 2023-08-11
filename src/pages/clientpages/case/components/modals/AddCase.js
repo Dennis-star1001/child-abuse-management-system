@@ -1,24 +1,73 @@
-import { Button, FormControl, FormLabel, Input, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, SimpleGrid, useDisclosure } from "@chakra-ui/react"
-import React, { useState } from "react"
+import {
+  Button,
+  FormControl,
+  FormLabel,
+  Input,
+  Modal,
+  ModalBody,
+  ModalCloseButton,
+  ModalContent,
+  ModalFooter,
+  ModalHeader,
+  ModalOverlay,
+  SimpleGrid,
+  Spinner,
+  useDisclosure,
+} from "@chakra-ui/react";
+import React, { useState } from "react";
+import { toast } from "react-toastify";
+import { postData } from "../../../../../api/api";
+import { useNavigate } from "react-router-dom";
 
-export default function AddCase() {
-  const { isOpen, onOpen, onClose } = useDisclosure()
-
-  const initialRef = React.useRef(null)
-  const finalRef = React.useRef(null)
-
+export default function AddCase({ loadCases, name }) {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  // console.log(name, "loklo");
+  const initialRef = React.useRef(null);
+  const finalRef = React.useRef(null);
+  const [loading, setLoading] = useState(false);
+  const randomNumber = Math.floor(Math.random() * 4000) + 1;
   const [data, setData] = useState({
-
-    case_type: "",
-    case_location: "",
-    case_date: "",
-    case_time: "",
-
+    type: "",
+    location: "",
+    date: "",
+    time: "",
+    caseId: `CASE/18/${randomNumber}`,
+    description:
+      "change this value to empty string when you create a form input for description...............................................",
   });
-  const { case_type, case_location, case_date, case_time } = data;
+  const { type, location, date, time } = data;
   const handleChange = (e) => {
     const { name, value } = e.target;
     setData((prevData) => ({ ...prevData, [name]: value }));
+  };
+  const navigate = useNavigate();
+  const handleSubmit = () => {
+    // toast.dark(JSON.stringify(data));
+    setLoading(true);
+    const formData = new FormData();
+    const email = localStorage.getItem("client");
+    formData.append("type", type);
+    formData.append("location", location);
+    formData.append("date", date);
+    formData.append("time", time);
+    formData.append("description", data.description);
+    formData.append("name", name);
+    formData.append("email", email);
+    formData.append("caseId", data.caseId);
+    const url = "/view/add-case.php";
+    postData(url, formData)
+      .then((res) => {
+        toast.success(res.data);
+        setLoading(false);
+        onClose();
+        navigate("/client");
+        loadCases();
+      })
+      .catch((err) => {
+        setLoading(false);
+        onClose();
+        toast.error(err);
+      });
   };
   return (
     <>
@@ -26,13 +75,12 @@ export default function AddCase() {
         Add Case
       </Button>
 
-      <Modal size={'3xl'}
+      <Modal
+        size={"3xl"}
         initialFocusRef={initialRef}
         finalFocusRef={finalRef}
         isOpen={isOpen}
-        onClose={onClose}
-
-      >
+        onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
           <ModalHeader>Add Case</ModalHeader>
@@ -41,47 +89,57 @@ export default function AddCase() {
             <SimpleGrid columns={2} gap='10'>
               <FormControl>
                 <FormLabel>Case Type</FormLabel>
-                <Input ref={initialRef} placeholder='Case Type'
+                <Input
+                  ref={initialRef}
+                  placeholder='Case Type'
                   type='text'
-                  name='case_type'
+                  name='type'
                   onChange={handleChange}
-                  value={case_type} />
+                  value={type}
+                />
               </FormControl>
 
-              <FormControl >
+              <FormControl>
                 <FormLabel>Case Location</FormLabel>
-                <Input placeholder='Case Location'
+                <Input
+                  placeholder='Case Location'
                   type='text'
-                  name='case_location'
+                  name='location'
                   onChange={handleChange}
-                  value={case_location} />
+                  value={location}
+                />
               </FormControl>
-              <FormControl >
+              <FormControl>
                 <FormLabel>Case Date</FormLabel>
-                <Input type='date' placeholder='Case Date'
-                  name='case_date'
+                <Input
+                  type='date'
+                  placeholder='Case Date'
+                  name='date'
                   onChange={handleChange}
-                  value={case_date} />
+                  value={date}
+                />
               </FormControl>
-              <FormControl >
+              <FormControl>
                 <FormLabel>Case Time</FormLabel>
-                <Input placeholder='Case Time'  type='time'
-                  name='case_time'
+                <Input
+                  placeholder='Case Time'
+                  type='time'
+                  name='time'
                   onChange={handleChange}
-                  value={case_time} />
+                  value={time}
+                />
               </FormControl>
-
             </SimpleGrid>
           </ModalBody>
 
           <ModalFooter>
-            <Button colorScheme='blue' mr={3}>
-              Save
+            <Button onClick={handleSubmit} colorScheme='blue' mr={3}>
+              {loading ? <Spinner /> : "Save"}
             </Button>
             <Button onClick={onClose}>Cancel</Button>
           </ModalFooter>
         </ModalContent>
       </Modal>
     </>
-  )
+  );
 }
