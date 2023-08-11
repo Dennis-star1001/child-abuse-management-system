@@ -90,7 +90,9 @@ function AdminRoute() {
           /> */}
           <Route
             path='/child-profile/:id'
-            element={<ProfileOfChild children={children} />}
+            element={
+              <ProfileOfChild loadChildren={loadChildren} children={children} />
+            }
           />
         </Routes>
       </Box>

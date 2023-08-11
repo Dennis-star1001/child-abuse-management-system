@@ -1,32 +1,58 @@
-import { Avatar, Box, Button, Flex, Table, TableContainer, Tbody, Td, Text, Th, Thead, Tr, WrapItem } from '@chakra-ui/react'
-import React from 'react'
+import {
+  Avatar,
+  Box,
+  Button,
+  Flex,
+  Table,
+  TableContainer,
+  Tbody,
+  Td,
+  Text,
+  Th,
+  Thead,
+  Tr,
+  WrapItem,
+} from "@chakra-ui/react";
+import React from "react";
 
-import { Link } from 'react-router-dom'
-import { AiFillEdit, AiFillEye } from 'react-icons/ai'
-import { PersonalInfo } from './components/PersonalChildInfo'
-import { Address } from './components/Address'
+import { Link } from "react-router-dom";
+import { AiFillEdit, AiFillEye } from "react-icons/ai";
+import { PersonalInfo } from "./components/PersonalChildInfo";
+import { Address } from "./components/Address";
 
-export const Profile = () => {
+export const Profile = ({ data }) => {
   return (
-<Box ml='64' px='5' class="mx-auto max-w-7xl  sm:px-6 lg:px-8">
-     
-            <Flex alignItems={'center'} borderRadius={'2xl'} border='1px solid #E2E8F0' gap='5' p='7'>
-               
-                <WrapItem>
-                    <Avatar size={'xl'} name='Dan Abrahmov' src='https://bit.ly/dan-abramov' />
-                </WrapItem>
-                <Box w='full' bg='white'>
-                    <Text fontSize={'lg'} fontWeight={'medium'}>Temoye Dennis</Text>
-                    <Text color={'#A5AEBB'} fontSize={'sm'}>tdennis.developer@gmail.com</Text>
-                    <Text color={'#A5AEBB'} fontSize={'sm'}>+234 81635 45039</Text>
-                </Box>
-            </Flex>
-            <PersonalInfo />
+    <Box ml='64' px='5' class='mx-auto max-w-7xl  sm:px-6 lg:px-8'>
+      <Flex
+        alignItems={"center"}
+        borderRadius={"2xl"}
+        border='1px solid #E2E8F0'
+        gap='5'
+        p='7'>
+        <WrapItem>
+          <Avatar
+            size={"xl"}
+            name='Dan Abrahmov'
+            src='https://bit.ly/dan-abramov'
+          />
+        </WrapItem>
+        <Box w='full' bg='white'>
+          <Text fontSize={"lg"} fontWeight={"medium"}>
+            {data.firstname} {data.lastname}
+          </Text>
+          <Text color={"#A5AEBB"} fontSize={"sm"}>
+            {data.email}
+          </Text>
+          <Text color={"#A5AEBB"} fontSize={"sm"}>
+            {data.phone}
+          </Text>
+        </Box>
+      </Flex>
+      <PersonalInfo />
 
-          
-            <Address />
-            
-            {/* <TableContainer>
+      <Address />
+
+      {/* <TableContainer>
                 <Table size='sm'>
                     <Thead>
                         <Tr >
@@ -65,6 +91,6 @@ export const Profile = () => {
                     </Tbody>
                 </Table>
             </TableContainer> */}
-</Box>
-  )
-}
+    </Box>
+  );
+};

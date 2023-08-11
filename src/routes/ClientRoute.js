@@ -25,6 +25,7 @@ function ClientRoute() {
   const [loading, setLoading] = useState(false);
   const [children, setChildren] = useState([]);
   const [cases, setCase] = useState([]);
+  const [client, setClient] = useState([]);
   useEffect(() => {
     const auth = localStorage.getItem("client");
     if (!auth) {
@@ -33,30 +34,44 @@ function ClientRoute() {
     }
   }, [navigate]);
 
-  const loadChildren = () => {
-    setLoading(true);
-    const link = "view/children-list.php";
-    getData(link)
-      .then((res) => {
-        setChildren(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+  const loadProfile = () => {
+    const email = localStorage.getItem("client");
+    if (email) {
+      const url = `view/profile.php?email=${email}`;
+      getData(url)
+        .then((res) => {
+          setClient(res.data);
+          // console.log(res.data, "response");
+        })
+        .catch((err) => {
+          toast.error("error !!!");
+        });
+    } else {
+      // navigate("/");
+      toast("error please logout!!!");
+    }
   };
   const loadCases = () => {
-    setLoading(true);
-    const link = "view/get-case.php";
-    getData(link)
-      .then((res) => {
-        setCase(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    const email = localStorage.getItem("client");
+    if (email) {
+      const url = `view/view-client-case.php?email=${email}`;
+      getData(url)
+        .then((res) => {
+          setCase(res.data);
+          // console.log(res.data, "dartrrt");
+        })
+        .catch((err) => {
+          toast.error("error !!!");
+        });
+    } else {
+      // navigate("/");
+      toast("error please logout!!!");
+    }
   };
+  const data = client[0];
+
   useEffect(() => {
-    loadChildren();
+    loadProfile();
     loadCases();
   }, []);
   return (
@@ -75,10 +90,21 @@ function ClientRoute() {
               <ChildrenList loadChildren={loadChildren} children={children} />
             }
           /> */}
-          <Route path='/profile' element={<Profile />} />
-          <Route path='/case' element={<Case cases={cases} />} />
-          <Route path='/case/child-case/:id' element={<ViewCase cases={cases} />} />
-          
+          <Route path='/profile' element={<Profile data={data} />} />
+          <Route
+            path='/case'
+            element={
+              <Case
+                loadCases={loadCases}
+                name={data && data.firstname}
+                cases={cases}
+              />
+            }
+          />
+          <Route
+            path='/case/child-case/:id'
+            element={<ViewCase cases={cases} />}
+          />
         </Routes>
       </Box>
     </div>

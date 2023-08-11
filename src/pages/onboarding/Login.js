@@ -50,6 +50,9 @@ export default function Login() {
               navigate(`/${res.data}`);
               localStorage.setItem("client", email);
               setLoading(false);
+            } else {
+              toast.dark(res.data);
+              setLoading(false);
             }
           })
           .catch((err) => {
