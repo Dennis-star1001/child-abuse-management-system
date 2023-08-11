@@ -25,6 +25,7 @@ function ClientRoute() {
   const [loading, setLoading] = useState(false);
   const [children, setChildren] = useState([]);
   const [cases, setCase] = useState([]);
+  const [client, setClient] = useState();
   useEffect(() => {
     const auth = localStorage.getItem("client");
     if (!auth) {
@@ -33,31 +34,25 @@ function ClientRoute() {
     }
   }, [navigate]);
 
-  const loadChildren = () => {
-    setLoading(true);
-    const link = "view/children-list.php";
-    getData(link)
-      .then((res) => {
-        setChildren(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+  const loadProfile = () => {
+    const email = localStorage.getItem("client");
+    if (email) {
+      const url = `view/profile.php?email=${email}`;
+      getData(url)
+        .then((res) => {
+          setClient(res.data);
+        })
+        .catch((err) => {
+          toast.error("error !!!");
+        });
+    } else {
+      // navigate("/");
+      toast("error please logout!!!");
+    }
   };
-  const loadCases = () => {
-    setLoading(true);
-    const link = "view/get-case.php";
-    getData(link)
-      .then((res) => {
-        setCase(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
+
   useEffect(() => {
-    loadChildren();
-    loadCases();
+    loadProfile();
   }, []);
   return (
     <div>
