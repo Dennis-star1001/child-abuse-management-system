@@ -47,11 +47,11 @@ import {
 } from "react-icons/md";
 
 const LinkItems = [
-  { name: "Dashboard", icon: AiOutlineAppstore, destination: "/admin" },
+  { name: "Dashboard", icon: AiOutlineAppstore, destination: "/client" },
 //   { name: "Children", icon: MdOutlineReceipt, destination: "./children" },
   { name: "Case", icon: MdOutlinePeopleAlt, destination: "./case" },
   { name: "Profile", icon: MdOutlinePeopleAlt, destination: "./profile" },
-  { name: "Report", icon: MdOutlineCases, destination: "./report" },
+  // { name: "Report", icon: MdOutlineCases, destination: "./report" },
 ];
 
 const SidebarContent = ({ onClose, ...rest }) => {
