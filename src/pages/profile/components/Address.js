@@ -27,14 +27,7 @@ export const Address = ({ data }) => {
                             <Text color={'#A5AEBB'} fontSize={'sm'}>Home Address</Text>
                             <Text fontWeight={'medium'}></Text>
                         </Box>
-                        <Box>
-                            <Text color={'#A5AEBB'} fontSize={'sm'}>Parent/Gurdian Address</Text>
-                            <Text fontWeight={'medium'}></Text>
-                        </Box>
-                        <Box>
-                            <Text color={'#A5AEBB'} fontSize={'sm'}>School Address Address</Text>
-                            <Text fontWeight={'medium'}></Text>
-                        </Box>
+                        
                     </SimpleGrid>
               
                 <EditAddress />

@@ -135,6 +135,11 @@ const MobileNav = ({ onOpen, header, ...rest }) => {
     navigate("/");
     toast.success("successfully log out");
   };
+  const profilepage = (params) => {
+  
+    navigate("/client/profile");
+   
+  };
   return (
     <Flex
       ml={{ base: 0, md: 60 }}
@@ -200,9 +205,8 @@ const MobileNav = ({ onOpen, header, ...rest }) => {
               <MenuList
                 bg={useColorModeValue("white", "gray.900")}
                 borderColor={useColorModeValue("gray.200", "gray.700")}>
-                <MenuItem>Profile</MenuItem>
-                <MenuItem>Settings</MenuItem>
-                <MenuItem>Billing</MenuItem>
+                <MenuItem onClick={profilepage}>Profile</MenuItem>
+                
                 <MenuDivider />
                 {/* <Link to='/'> */}
                 <MenuItem onClick={logout}>Sign out</MenuItem>

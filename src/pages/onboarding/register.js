@@ -243,7 +243,7 @@ export default function Registration() {
               <Input
                 placeholder='Gurdian/Parent Last Name'
                 _placeholder={{ color: "gray.500" }}
-                name='gurdian_first_name'
+                name='gurdian_last_name'
                 onChange={handleChange}
                 value={gurdian_last_name}
               />
@@ -263,7 +263,7 @@ export default function Registration() {
               <Input
                 placeholder='Gurdian/Parent Phone number'
                 _placeholder={{ color: "gray.500" }}
-                name='gurdian_phone_number'
+                name='gurdian_phone'
                 onChange={handleChange}
                 value={gurdian_phone}
               />

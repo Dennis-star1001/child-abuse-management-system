@@ -10,6 +10,7 @@ import {
   ModalFooter,
   ModalHeader,
   ModalOverlay,
+  Select,
   SimpleGrid,
   Spinner,
   useDisclosure,
@@ -20,6 +21,21 @@ import { postData } from "../../../../../api/api";
 import { useNavigate } from "react-router-dom";
 
 export default function AddCase({ loadCases, name }) {
+
+  const ChildCaseType = [
+   
+    'International Child Abduction',
+    'Child Abuse and Neglect',
+    'Adoption',
+    'Guardianship',
+    'Educational Rights',
+    'Parental Rights and Termination',
+    "Foster Care and Adoption Agency Disputes",
+    "Minors' Privacy and Consent",
+    "Child Exploitation and Online Safety",
+    "Gender Identity and LGBTQ+ Rights"
+    
+  ]
   const { isOpen, onOpen, onClose } = useDisclosure();
   // console.log(name, "loklo");
   const initialRef = React.useRef(null);
@@ -68,7 +84,9 @@ export default function AddCase({ loadCases, name }) {
         onClose();
         toast.error(err);
       });
+    console.log("UserID",data.caseId)
   };
+  
   return (
     <>
       <Button mr='10' onClick={onOpen}>
@@ -89,14 +107,20 @@ export default function AddCase({ loadCases, name }) {
             <SimpleGrid columns={2} gap='10'>
               <FormControl>
                 <FormLabel>Case Type</FormLabel>
-                <Input
-                  ref={initialRef}
-                  placeholder='Case Type'
+                <Select ref={initialRef}
+                  placeholder= 'Select Case Type'
                   type='text'
                   name='type'
                   onChange={handleChange}
-                  value={type}
-                />
+                  value={type}>
+                  {ChildCaseType.map(item =>(
+                    
+                    <option>{item}</option>
+                  ))}
+                  
+                 
+                </Select>
+               
               </FormControl>
 
               <FormControl>
