@@ -18,31 +18,26 @@ export const ParentInfo = ({ loadChildren, data }) => {
             <Text color={"#A5AEBB"} fontSize={"sm"}>
               First Name
             </Text>
-            <Text fontWeight={"medium"}>Dennis </Text>
+            <Text fontWeight={"medium"}>{data.guardian_name} </Text>
           </Box>
-          <Box>
-            <Text color={"#A5AEBB"} fontSize={"sm"}>
-              Last Name
-            </Text>
-            <Text fontWeight={"medium"}>Temoye </Text>
-          </Box>
+
           <Box>
             <Text color={"#A5AEBB"} fontSize={"sm"}>
               Email Address
             </Text>
-            <Text fontWeight={"medium"}>admin@gmail.com </Text>
+            <Text fontWeight={"medium"}>{data.guardian_email} </Text>
           </Box>
           <Box>
             <Text color={"#A5AEBB"} fontSize={"sm"}>
               Phone
             </Text>
-            <Text fontWeight={"medium"}>+234 8163 5450 39</Text>
+            <Text fontWeight={"medium"}>{data.guardian_phone}</Text>
           </Box>
           <Box>
             <Text color={"#A5AEBB"} fontSize={"sm"}>
               Bio
             </Text>
-            <Text fontWeight={"medium"}>Student</Text>
+            <Text fontWeight={"medium"}>{data.guardian_bio}</Text>
           </Box>
         </SimpleGrid>
         <ParentInformation loadChildren={loadChildren} data={data} />
