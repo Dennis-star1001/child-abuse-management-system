@@ -48,7 +48,7 @@ const LinkItems = [
   { name: "Children", icon: MdOutlineReceipt, destination: "./children" },
   { name: "Case", icon: MdOutlinePeopleAlt, destination: "./case" },
   { name: "Profile", icon: MdOutlinePeopleAlt, destination: "./profile" },
-  { name: "Report", icon: MdOutlineCases, destination: "./report" },
+ 
 ];
 
 const SidebarContent = ({ onClose, ...rest }) => {

@@ -25,7 +25,7 @@ import DeleteModal from "../../components/DeleteModal";
 import EditChild from "./EditChild";
 // import axios from 'axios'
 
-export const ChildrenList = ({ loadChildren, children }) => {
+export const ChildrenList = ({ loadChildren, children,cases }) => {
   // console.log(children, "list");
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
@@ -55,14 +55,15 @@ export const ChildrenList = ({ loadChildren, children }) => {
                   <th scope='col' className='px-6 py-3 font-medium text-xs'>
                     Email
                   </th>
-                  <th scope='col' className='px-6 py-3 font-medium text-xs'>
-                    Abuse ID
-                  </th>
+                
                   <th scope='col' className='px-6 py-3 font-medium text-xs'>
                     Age
                   </th>
                   <th scope='col' className='px-6 py-3 font-medium text-xs'>
                     Address
+                  </th>
+                  <th scope='col' className='px-6 py-3 font-medium text-xs'>
+                    Country
                   </th>
                   <th scope='col' className='px-6 py-3 font-medium text-xs'>
                     Action
@@ -81,9 +82,10 @@ export const ChildrenList = ({ loadChildren, children }) => {
                           {data.username} {data.lastname}
                         </td>
                         <td className='px-6 py-4'>{data.email}</td>
-                        <td className='px-6 py-4'>Abuse ID</td>
                         <td className='px-6 py-4'>{data.age}</td>
                         <td className='px-6 py-4'>{data.address}</td>
+                        <td className='px-6 py-4'>{data.country}</td>
+
                         <td className='px-6 py-4 flex items-center gap-2'>
                           {/* <EditChild/> */}
 

@@ -9,7 +9,7 @@ export const Address = ({data}) => {
         <Flex flexDirection={'column'} my='10' borderRadius={'2xl'} border='1px solid #E2E8F0' gap='2' p='7'>
             <Text fontWeight={'medium'}>Address</Text>
             <Flex justifyContent={'space-between'}>
-                
+                {data &&
                     <SimpleGrid pt='5' columns={2} spacing={10} w='2xl'>
                         <Box >
                             <Text color={'#A5AEBB'} fontSize={'sm'}>Country</Text>
@@ -36,7 +36,7 @@ export const Address = ({data}) => {
                             <Text fontWeight={'medium'}>{data.school_address}</Text>
                         </Box>
                     </SimpleGrid>
-              
+}
                 <EditAddress />
 
             </Flex>

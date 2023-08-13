@@ -53,7 +53,7 @@ const LinkItems = [
   // { name: "Report", icon: MdOutlineCases, destination: "./report" },
 ];
 
-const SidebarContent = ({ onClose, ...rest }) => {
+const SidebarContent = ({ onClose,name, ...rest}) => {
   return (
     <Box
       transition='3s ease'
@@ -128,7 +128,7 @@ const NavItem = ({ icon, destination, children, ...rest }) => {
   );
 };
 
-const MobileNav = ({ onOpen, header, ...rest }) => {
+const MobileNav = ({ onOpen, header,lastname,firstname,...rest }) => {
   const navigate = useNavigate();
   const logout = (params) => {
     localStorage.clear();
@@ -192,9 +192,9 @@ const MobileNav = ({ onOpen, header, ...rest }) => {
                     alignItems='flex-start'
                     spacing='1px'
                     ml='2'>
-                    <Text fontSize='sm'>Justina Clark</Text>
+                    <Text fontSize='sm'>{firstname} {lastname}</Text>
                     <Text fontSize='xs' color='gray.600'>
-                      Admin
+                      Child
                     </Text>
                   </VStack>
                   <Box display={{ base: "none", md: "flex" }}>
@@ -220,7 +220,7 @@ const MobileNav = ({ onOpen, header, ...rest }) => {
   );
 };
 
-const SidebarWithHeader = () => {
+const SidebarWithHeader = ({lastname,firstname}) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const location = useLocation();
 
@@ -253,7 +253,7 @@ const SidebarWithHeader = () => {
         </DrawerContent>
       </Drawer>
       {/* mobilenav */}
-      <MobileNav onOpen={onOpen} header={currentHeader} />
+      <MobileNav lastname={lastname} firstname={firstname} onOpen={onOpen} header={currentHeader} />
       <Box ml={{ base: 0, md: 60 }} p='4'>
         {/* Content */}
       </Box>

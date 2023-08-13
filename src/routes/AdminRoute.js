@@ -79,7 +79,7 @@ function AdminRoute() {
           <Route
             path='/children'
             element={
-              <ChildrenList loadChildren={loadChildren} children={children} />
+              <ChildrenList loadChildren={loadChildren} cases={cases} children={children} />
             }
           />
           <Route path='/' element={<Dashboard />} />

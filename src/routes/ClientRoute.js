@@ -26,7 +26,7 @@ function ClientRoute() {
   const [children, setChildren] = useState([]);
   const [cases, setCase] = useState([]);
   const [client, setClient] = useState([]);
-  console.log("Cases",cases)
+  console.log("Client", client)
   useEffect(() => {
     const auth = localStorage.getItem("client");
     if (!auth) {
@@ -34,6 +34,20 @@ function ClientRoute() {
       toast.error("Please Login");
     }
   }, [navigate]);
+
+  const loadChildren = () => {
+    setLoading(true);
+    const link = "view/children-list.php";
+    getData(link)
+      .then((res) => {
+        setChildren(res.data);
+        console.log(res.data, "test");
+      })
+      .catch((err) => {
+        console.log(err);
+        toast.error(err);
+      });
+  };
 
   const loadProfile = () => {
     const email = localStorage.getItem("client");
@@ -78,7 +92,7 @@ function ClientRoute() {
   return (
     <div>
       <Box>
-        <Navbar />
+        <Navbar firstname={data && data.firstname} lastname={data && data.lastname} />
         <Routes>
           <Route
             path='/'
@@ -91,7 +105,7 @@ function ClientRoute() {
               <ChildrenList loadChildren={loadChildren} children={children} />
             }
           /> */}
-          <Route path='/profile' element={<Profile data={data} />} />
+          <Route path='/profile' element={<Profile loadChildren={loadChildren} cases={cases} children={client} data={data} />} />
           <Route
             path='/case'
             element={
