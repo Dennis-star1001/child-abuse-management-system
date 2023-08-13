@@ -31,27 +31,31 @@ export default function PersonalInformation({ loadChildren, data }) {
     setDataValues((prevData) => ({ ...prevData, [name]: value }));
   };
   const handleSubmit = () => {
-    const email = "Ireyioka765@gmail.com";
-    setLoading(true);
-    const url = `view/edit-first-section.php?email=${email}`;
-    const formData = new FormData();
-    formData.append("firstname", dataValues.firstname);
-    formData.append("lastname", dataValues.lastname);
-    formData.append("email", dataValues.email);
-    formData.append("phone", dataValues.phone);
-    formData.append("bio", dataValues.bio);
-    postData(url, formData)
-      .then((res) => {
-        setLoading(false);
-        loadChildren();
-        onClose();
-        toast.success(res.data);
-      })
-      .catch((err) => {
-        toast.error("network error !");
-        setLoading(false);
-        onClose();
-      });
+    const email = localStorage.getItem("client");
+    if (email) {
+      setLoading(true);
+      const url = `view/edit-first-section.php?email=${email}`;
+      const formData = new FormData();
+      formData.append("firstname", dataValues.firstname);
+      formData.append("lastname", dataValues.lastname);
+      formData.append("email", dataValues.email);
+      formData.append("phone", dataValues.phone);
+      formData.append("bio", dataValues.bio);
+      postData(url, formData)
+        .then((res) => {
+          setLoading(false);
+          loadChildren();
+          onClose();
+          toast.success(res.data);
+        })
+        .catch((err) => {
+          toast.error("network error !");
+          setLoading(false);
+          onClose();
+        });
+    } else {
+      toast.error("Session Expired please log out");
+    }
   };
 
   const initialRef = React.useRef(null);
