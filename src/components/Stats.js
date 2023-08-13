@@ -18,7 +18,7 @@ export default function Stats({ children, cases }) {
     {
       id: 2,
       name: "Pending",
-      value: "119",
+      value: cases.filter((item) => item.case_status === "Pending").length,
       icon: <MdGppBad size='24' color='#F93939' />,
     },
     {
@@ -30,7 +30,7 @@ export default function Stats({ children, cases }) {
     {
       id: 4,
       name: "Resolved",
-      value: "46,000",
+      value: cases.filter((item) => item.case_status === "Resolved").length,
       icon: <HiOutlineDocumentReport size='24' color='green' />,
     },
   ];

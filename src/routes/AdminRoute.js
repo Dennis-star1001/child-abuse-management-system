@@ -19,6 +19,7 @@ import { Profile } from "../pages/profile/Profile";
 // import { Case } from "../pages/case/Case";
 import { ProfileOfChild } from "../pages/case/ProfileOfChild";
 import { Case } from "../pages/case/Case";
+import { ViewCase } from "../pages/case/ViewCase";
 
 function AdminRoute() {
   const navigate = useNavigate();
@@ -91,8 +92,12 @@ function AdminRoute() {
           <Route
             path='/child-profile/:id'
             element={
-              <ProfileOfChild loadChildren={loadChildren} children={children} />
+              <ProfileOfChild loadChildren={loadChildren} cases={cases} children={children} />
             }
+          />
+             <Route
+            path='/case/child-case/:id'
+            element={<ViewCase cases={cases} />}
           />
         </Routes>
       </Box>

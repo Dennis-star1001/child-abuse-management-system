@@ -48,9 +48,9 @@ export const Profile = ({ data }) => {
           </Text>
         </Box>
       </Flex>
-      <PersonalInfo />
+      <PersonalInfo data={data}/>
 
-      <Address />
+      <Address data={data} />
 
       {/* <TableContainer>
                 <Table size='sm'>

@@ -96,13 +96,13 @@ export const Case = ({ cases }) => {
                     </Flex>
                   </SimpleGrid>
                   <Button
-                    onClick={() => navigate("/admin/child-profile/1")}
+                   onClick={() => navigate(`/admin/case/child-case/${item.id}`)}
                     bg='#696BC2'
                     color='white'
                     mt='5'>
-                    <Link className='w-full' to={`case/details/${item.id}`}>
+                    {/* <Link className='w-full' to={`case/details/${item.id}`}> */}
                       View
-                    </Link>
+                    {/* </Link> */}
                   </Button>
                 </Box>
               );

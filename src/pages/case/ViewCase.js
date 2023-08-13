@@ -51,7 +51,7 @@ export const ViewCase = ({cases}) => {
                     <SimpleGrid pt='5' columns={2} spacing={10} w='2xl'>
                         <Box >
                             <Text color={'#A5AEBB'} fontSize={'sm'}>Case ID</Text>
-                            <Text fontWeight={'medium'}>{Data.caseId} </Text>
+                            <Text fontWeight={'medium'}>{Data.case_id} </Text>
                         </Box>
                         <Box>
                             <Text color={'#A5AEBB'} fontSize={'sm'}>Name</Text>
@@ -67,7 +67,7 @@ export const ViewCase = ({cases}) => {
                             Data.case_status === "Solved"
                               ? "green.300"
                               : Data.case_status === "Pending" && "yellow.300"
-                          } px='3' w='fit-content' color='white' fontWeight={'medium'}>{Data.case_statue}</Text>
+                          } px='3' w='fit-content' color='white' fontWeight={'medium'}>{Data.case_status}</Text>
                         </Box>
                         <Box>
                             <Text fontWeight={'medium'}>Case date:</Text>

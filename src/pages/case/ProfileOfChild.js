@@ -21,7 +21,7 @@ import { Link, useParams } from "react-router-dom";
 import { AiFillEdit } from "react-icons/ai";
 import { CaseDetails } from "./components/CaseDetails";
 
-export const ProfileOfChild = ({ loadChildren, children }) => {
+export const ProfileOfChild = ({ loadChildren, children,cases }) => {
   let { id } = useParams();
   console.log("Params", children && children);
 
@@ -73,7 +73,7 @@ export const ProfileOfChild = ({ loadChildren, children }) => {
 
           <ParentInfo loadChildren={loadChildren} data={Data} />
           <Address loadChildren={loadChildren} data={Data} />
-          <CaseDetails />
+          <CaseDetails cases={cases}/>
         </>
       )}
       {/* <TableContainer>

@@ -4,11 +4,12 @@ import { VscPerson } from "react-icons/vsc";
 import { MdGppBad, MdPendingActions } from "react-icons/md";
 import { HiOutlineDocumentReport } from "react-icons/hi";
 export const Dashboard = ({ children, cases }) => {
+  console.log(cases.caseId)
   const stats = [
     {
       id: 2,
       name: "Pending",
-      value: cases.filter((item) => item.status === "Pending").length,
+      value: cases.filter((item) => item.case_status === "Pending").length,
       icon: <MdGppBad size='24' color='#F93939' />,
     },
     {
@@ -20,7 +21,7 @@ export const Dashboard = ({ children, cases }) => {
     {
       id: 4,
       name: "Resolved",
-      value: cases.filter((item) => item.status === "Solved").length,
+      value: cases.filter((item) => item.case_status === "Solved").length,
       icon: <HiOutlineDocumentReport size='24' color='green' />,
     },
   ];
@@ -84,34 +85,32 @@ export const Dashboard = ({ children, cases }) => {
                     </table> */}
 
                 <div class='relative overflow-x-auto'>
-                  <Table class='w-full text-sm text-left text-gray-500 dark:text-gray-400'>
+                  <Table class=' text-sm text-left text-gray-500 dark:text-gray-400'>
                     <Thead class='text-xs text-[#6C6573]  uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400'>
                       <Tr className='border-b  border-[#F3F3F3] bg-[#F9FBFC] '>
-                        <Th scope='col' class='px-6 py-3 font-medium text-xs'>
+                        <Th w='40'  textAlign={'center'} class='px-6 py-3 font-medium text-xs'>
                           S/N
                         </Th>
-                        <Th scope='col' class='px-6 py-3 font-medium text-xs'>
-                          User id
-                        </Th>
-                        <Th scope='col' class='px-6 py-3 font-medium text-xs'>
+                       
+                        <Th  w='40' textAlign={'center'} class='px-6 py-3 font-medium text-xs'>
                           Case id
                         </Th>
-                        <Th scope='col' class='px-6 py-3 font-medium text-xs'>
+                        <Th w='40' textAlign={'center'} class='px-6 py-3 font-medium text-xs'>
                           Name
                         </Th>
-                        <Th scope='col' class='px-6 py-3 font-medium text-xs'>
+                        <Th w='40' textAlign={'center'} class='px-6 py-3 font-medium text-xs'>
                           Case Type
                         </Th>
-                        <Th scope='col' class='px-6 py-3 font-medium text-xs'>
+                        <Th w='40' textAlign={'center'} class='px-6 py-3 font-medium text-xs'>
                           Time
                         </Th>
-                        <Th scope='col' class='px-6 py-3 font-medium text-xs'>
+                        <Th w='40' textAlign={'center'} class='px-6 py-3 font-medium text-xs'>
                           Date
                         </Th>
-                        <Th scope='col' class='px-6 py-3 font-medium text-xs'>
+                        <Th w='40' textAlign={'center'} class='px-6 py-3 font-medium text-xs'>
                           Location
                         </Th>
-                        <Th scope='col' class='px-6 py-3 font-medium text-xs'>
+                        <Th w='40' textAlign={'center'} class='px-6 py-3 font-medium text-xs'>
                           Case Status
                         </Th>
                       </Tr>
@@ -121,19 +120,19 @@ export const Dashboard = ({ children, cases }) => {
                         <Tr
                           key={index}
                           className='bg-white font-medium dark:bg-gray-800 border-b border-[#F3F3F3]'>
-                          <Td class='px-6 py-4'>{item.id}</Td>
-                          <Td class='px-6 py-4'></Td>
-                          <Td class='px-6 py-4'>{item.case_id}</Td>
-                          <Td class='px-6 py-4'>{item.name}</Td>
-                          <Td class='px-6 py-4'>{item.type}</Td>
-                          <Td class='px-6 py-4'>{item.time}</Td>
-                          <Td class='px-6 py-4'>{item.date}</Td>
-                          <Td class='px-6 py-4'></Td>
-                          <Td class='px-6 py-4'>{item.status}</Td>
+                          <Td textAlign={'center'} class='px-6 py-4'>{item.id}</Td>
 
-                          <Td color='white' textAlign={"center"}>
-                            dcsdmdvk
-                          </Td>
+                          <Td textAlign={'center'} class='px-6 py-4'>{item.case_id}</Td>
+                          <Td textAlign={'center'} class='px-6 py-4'>{item.name}</Td>
+                          <Td textAlign={'center'} class='px-6 py-4'>{item.type}</Td>
+                          <Td textAlign={'center'} class='px-6 py-4'>{item.time}</Td>
+                          <Td textAlign={'center'} class='px-6 py-4'>{item.date}</Td>
+                          <Td textAlign={'center'} class='px-6 py-4'>{item.location}</Td>
+                          <Td color='white' textAlign={'center'} bg={
+                            item.case_status === "Solved"
+                              ? "green.300"
+                              : item.case_status === "Pending" && "yellow.300"
+                          } class='px-6 py-4'>{item.case_status}</Td>
                         </Tr>
                       ))}
                       {/* bg={data.case_status === 'Pending' ? '#FFCC00' : data.case_status === 'Resolved' ? '#008000' : 'red'} */}

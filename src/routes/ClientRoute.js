@@ -26,6 +26,7 @@ function ClientRoute() {
   const [children, setChildren] = useState([]);
   const [cases, setCase] = useState([]);
   const [client, setClient] = useState([]);
+  console.log("Cases",cases)
   useEffect(() => {
     const auth = localStorage.getItem("client");
     if (!auth) {

@@ -42,12 +42,13 @@ export const Case = ({ loadCases, cases, name }) => {
         </Flex>
 
         <Box p={"5"}>
-          <SimpleGrid columns={2} gap='5'>
+          <SimpleGrid columns={{base:1,md:1,xl:2}} gap='5'>
             {cases &&
               cases.map((item, index) => {
                 const { status } = item;
                 return (
                   <Box
+                  fontSize={'sm'} 
                     key={index}
                     p='5'
                     h='fit-content'
@@ -71,22 +72,19 @@ export const Case = ({ loadCases, cases, name }) => {
                         <Text fontWeight={"medium"}>Name:</Text>
                         <Text>{item.name}</Text>
                       </Flex>
-                      <Flex gap='3'>
-                        <Text fontWeight={"medium"}>Case type:</Text>
-                        <Text>{item.type}</Text>
-                      </Flex>
+                      
                       <Flex gap='3'>
                         <Text fontWeight={"medium"}>Case status:</Text>
                         <Text
                           bg={
-                            status === "Solved"
+                            item.case_status === "Solved"
                               ? "green.300"
-                              : status === "Pending" && "yellow.300"
+                              : item.case_status === "Pending" && "yellow.300"
                           }
                           px='3'
                           color='white'
                           rounded={6}>
-                          {item.status}
+                          {item.case_status}
                         </Text>
                       </Flex>
                       <Flex gap='3'>
@@ -101,9 +99,13 @@ export const Case = ({ loadCases, cases, name }) => {
                         <Text fontWeight={"medium"}>Case location:</Text>
                         <Text>{item.location}</Text>
                       </Flex>
+                      <Flex gap='3' maxW='5xl'>
+                        <Text fontWeight={"medium"}>Case type:</Text>
+                        <Text>{item.type}</Text>
+                      </Flex>
                     </SimpleGrid>
                     <Button
-                      onClick={() => navigate("/client/case/child-case/1")}
+                      onClick={() => navigate(`/client/case/child-case/${item.id}`)}
                       bg='#696BC2'
                       color='white'
                       mt='5'>
