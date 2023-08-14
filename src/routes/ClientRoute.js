@@ -26,7 +26,7 @@ function ClientRoute() {
   const [children, setChildren] = useState([]);
   const [cases, setCase] = useState([]);
   const [client, setClient] = useState([]);
-  console.log("Client", client)
+  console.log("Client", client);
   useEffect(() => {
     const auth = localStorage.getItem("client");
     if (!auth) {
@@ -92,7 +92,10 @@ function ClientRoute() {
   return (
     <div>
       <Box>
-        <Navbar firstname={data && data.firstname} lastname={data && data.lastname} />
+        <Navbar
+          firstname={data && data.firstname}
+          lastname={data && data.lastname}
+        />
         <Routes>
           <Route
             path='/'
@@ -105,7 +108,17 @@ function ClientRoute() {
               <ChildrenList loadChildren={loadChildren} children={children} />
             }
           /> */}
-          <Route path='/profile' element={<Profile loadChildren={loadChildren} cases={cases} children={client} data={data} />} />
+          <Route
+            path='/profile'
+            element={
+              <Profile
+                loadChildren={loadProfile}
+                cases={cases}
+                children={client}
+                data={data}
+              />
+            }
+          />
           <Route
             path='/case'
             element={
