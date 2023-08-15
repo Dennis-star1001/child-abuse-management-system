@@ -13,24 +13,24 @@ export const Address = ({ data }) => {
                     <SimpleGrid pt='5' columns={2} spacing={10} w='2xl'>
                         <Box >
                             <Text color={'#A5AEBB'} fontSize={'sm'}>Country</Text>
-                            <Text fontWeight={'medium'}></Text>
+                            <Text fontWeight={'medium'}>Nigeria</Text>
                         </Box>
                         <Box>
                             <Text color={'#A5AEBB'} fontSize={'sm'}>City/State</Text>
-                            <Text fontWeight={'medium'}> </Text>
+                            <Text fontWeight={'medium'}>Ondo</Text>
                         </Box>
                         <Box>
                             <Text color={'#A5AEBB'} fontSize={'sm'}>Postal Code</Text>
-                            <Text fontWeight={'medium'}></Text>
+                            <Text fontWeight={'medium'}>34522</Text>
                         </Box>
                         <Box>
                             <Text color={'#A5AEBB'} fontSize={'sm'}>Home Address</Text>
-                            <Text fontWeight={'medium'}></Text>
+                            <Text fontWeight={'medium'}>No 5 araromi street</Text>
                         </Box>
                         
                     </SimpleGrid>
               
-                <EditAddress />
+                
 
             </Flex>
         </Flex>

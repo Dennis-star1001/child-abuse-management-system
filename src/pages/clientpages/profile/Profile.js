@@ -74,7 +74,7 @@ export const Profile = ({ loadChildren, children,cases }) => {
 
           <ParentInfo loadChildren={loadChildren} data={children[0]} />
           <Address loadChildren={loadChildren} data={children[0]} />
-          <CaseDetails cases={cases}/>
+          
         </>
       )}
       {/* <TableContainer>

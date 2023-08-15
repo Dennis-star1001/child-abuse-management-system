@@ -8,10 +8,18 @@ import Registration from "./pages/onboarding/register";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ClientRoute from "./routes/ClientRoute";
-
+import TawkMessengerReact from '@tawk.to/tawk-messenger-react';
+import { useRef } from "react";
 function App() {
+ 
+  
+
   return (
     <div>
+        
+      <TawkMessengerReact
+        propertyId="64dbe47acc26a871b02f7420"
+        widgetId="default" />
       <Router>
         <ToastContainer />
         <Box>

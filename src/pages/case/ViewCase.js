@@ -6,6 +6,7 @@ import { Address } from './components/Address'
 import { Link, useParams } from 'react-router-dom'
 import { AiFillEdit } from 'react-icons/ai'
 import { CaseDetails } from './components/CaseDetails'
+import EditCase from './components/modals/EditCase'
 
 export const ViewCase = ({cases}) => {
     let { id } = useParams();
@@ -30,16 +31,16 @@ export const ViewCase = ({cases}) => {
                 {/* {data && data.map((index, data) => ( */}
                 <Box w='full' bg='white'>
                     <Text fontSize={'lg'} fontWeight={'medium'}>
-                        John Joe
+                       {Data.name}
                        
                     </Text>
                     <Text color={'#A5AEBB'} fontSize={'sm'}>
-                        {/* {Data.email} */}
-                        john@gmail.com
+                        {Data.email}
+                       
                     </Text>
                     <Text color={'#A5AEBB'} fontSize={'sm'}>
-                        {/* {Data.phone} */}
-                        0831342341434242
+                        {Data.phone}
+                    
                     </Text>
                 </Box>
                 {/* ))} */}
@@ -79,6 +80,7 @@ export const ViewCase = ({cases}) => {
                         </Box>
 
                     </SimpleGrid>
+<EditCase/>
                    
                 </Flex>
             </Flex>

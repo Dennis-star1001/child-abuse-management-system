@@ -1,4 +1,4 @@
-import { Button, FormControl, FormLabel, Input, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, SimpleGrid, Textarea, useDisclosure } from "@chakra-ui/react"
+import { Button, FormControl, FormLabel, Input, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, Select, SimpleGrid, Textarea, useDisclosure } from "@chakra-ui/react"
 import React from "react"
 import { AiFillEdit } from "react-icons/ai"
 
@@ -12,7 +12,7 @@ export default function EditCase () {
       <>
         <Button onClick={onOpen}>Edit <AiFillEdit/></Button>
   
-        <Modal size={'4xl'}
+        <Modal 
           initialFocusRef={initialRef}
           finalFocusRef={finalRef}
           isOpen={isOpen}
@@ -20,34 +20,19 @@ export default function EditCase () {
         >
           <ModalOverlay />
           <ModalContent>
-            <ModalHeader>Address</ModalHeader>
+            <ModalHeader>Case Status</ModalHeader>
             <ModalCloseButton />
             <ModalBody pb={6} >
-            <SimpleGrid columns={2} spacing={5}>
-              <FormControl>
-                <FormLabel>Country</FormLabel>
-                <Input ref={initialRef} placeholder='Country' />
-              </FormControl>
-  
+            <SimpleGrid columns={1} spacing={5}>
+              
+             
               <FormControl >
-                <FormLabel>City/State</FormLabel>
-                <Input placeholder='City/State' />
-              </FormControl>
-              <FormControl >
-                <FormLabel>Postal Code</FormLabel>
-                <Input placeholder='Postal Code' />
-              </FormControl>
-              <FormControl >
-                <FormLabel>Home Address</FormLabel>
-                <Textarea />
-              </FormControl>
-              <FormControl >
-                <FormLabel>School/Office Address</FormLabel>
-                <Textarea />
-              </FormControl>
-              <FormControl >
-                <FormLabel>Parent/Gurdian Address</FormLabel>
-                <Textarea />
+                <FormLabel>Status</FormLabel>
+                <Select placeholder="Update cases status">
+                  <option>Pending</option>
+                  <option>Solved</option>
+                  
+                </Select>
               </FormControl>
               </SimpleGrid>
             </ModalBody>

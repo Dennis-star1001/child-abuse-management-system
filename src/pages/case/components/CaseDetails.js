@@ -3,8 +3,28 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
 import EditCase from './modals/EditCase';
 
-export const CaseDetails = ({ cases }) => {
-    // const [data, setData] = useState([]);
+export const CaseDetails = ({ cases, data }) => {
+    console.log(data)
+    let { id } = useParams();
+    console.log("Params", data && data.email)
+    const newCase = [];
+
+
+    console.log(cases)
+
+  
+    //   if (cases[i].includes(data.email) === true) {
+    //     console.log(cases[i])
+    //     // Note It looks like your problem is here
+    //     newCase.push(cases[i]);
+    //   }
+    // }
+
+    // const index = cases.email.indexOf(id);
+    // console.log(index)
+    // const Data = cases[index];
+    // console.log("Data",Data)
+    // const [cases, setData] = useState([]);
     // useEffect(() => {
     //     cases.map(item => {
     //         setData(item.email);
@@ -21,7 +41,7 @@ export const CaseDetails = ({ cases }) => {
     // console.log(data)
     return (
         <>
-            {cases && cases.map((data) => (
+            {cases &&
                 <Flex flexDirection={'column'} my='10' borderRadius={'2xl'} border='1px solid #E2E8F0' gap='2' p='7'>
                     <Text fontWeight={'medium'}>Case details</Text>
                     <Flex justifyContent={'space-between'}>
@@ -31,34 +51,34 @@ export const CaseDetails = ({ cases }) => {
                             <>
                                 <Box >
                                     <Text color={'#A5AEBB'} fontSize={'sm'}>Case_ID</Text>
-                                    <Text fontWeight={'medium'}>{data.case_id} </Text>
+                                    <Text fontWeight={'medium'}>{cases.case_id} </Text>
                                 </Box>
                                 <Box>
                                     <Text color={'#A5AEBB'} fontSize={'sm'}>Name</Text>
-                                    <Text fontWeight={'medium'}>{data.firstname}  </Text>
+                                    <Text fontWeight={'medium'}>{cases.name}  </Text>
                                 </Box>
                                 <Box>
                                     <Text color={'#A5AEBB'} fontSize={'sm'}>Case type</Text>
-                                    <Text fontWeight={'medium'}>{data.type} </Text>
+                                    <Text fontWeight={'medium'}>{cases.type} </Text>
                                 </Box>
                                 <Box>
                                     <Text color={'#A5AEBB'} fontSize={'sm'}>Case status</Text>
-                                    <Text bg='red.300' px='3' w='fit-content' color='white' fontWeight={'medium'}>{data.case_status}</Text>
+                                    <Text bg='red.300' px='3' w='fit-content' color='white' fontWeight={'medium'}>{cases.case_status}</Text>
                                 </Box>
                                 <Box>
                                     <Text fontWeight={'medium'}>Case date:</Text>
-                                    <Text>{data.date}</Text>
+                                    <Text>{cases.date}</Text>
                                 </Box>
                                 <Box>
                                     <Text fontWeight={'medium'}>Case location:</Text>
-                                    <Text>{data.location}</Text>
+                                    <Text>{cases.location}</Text>
                                 </Box>
                             </>
                         </SimpleGrid>
-                       <EditCase/>
+                        <EditCase />
                     </Flex>
                 </Flex>
-            ))}
+            }
         </>
     )
 }

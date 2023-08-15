@@ -16,9 +16,9 @@ export const Profile = () => {
                     <Avatar size={'xl'} name='Dan Abrahmov' src='https://bit.ly/dan-abramov' />
                 </WrapItem>
                 <Box w='full' bg='white'>
-                    <Text fontSize={'lg'} fontWeight={'medium'}>Temoye Dennis</Text>
-                    <Text color={'#A5AEBB'} fontSize={'sm'}>tdennis.developer@gmail.com</Text>
-                    <Text color={'#A5AEBB'} fontSize={'sm'}>+234 81635 45039</Text>
+                    <Text fontSize={'lg'} fontWeight={'medium'}>Emmanuel Samuel</Text>
+                    <Text color={'#A5AEBB'} fontSize={'sm'}>emmanuelsamuel210@gmail.com</Text>
+                    <Text color={'#A5AEBB'} fontSize={'sm'}>+234 810 890 4052</Text>
                 </Box>
             </Flex>
             <PersonalInfo />

@@ -43,6 +43,7 @@ export const Case = ({ cases }) => {
               return (
                 <Box
                   key={index}
+                  fontSize={'sm'} 
                   p='5'
                   h='fit-content'
                   bg='#F9FAFB'
@@ -69,17 +70,20 @@ export const Case = ({ cases }) => {
                       <Text fontWeight={"medium"}>Case type:</Text>
                       <Text>{item.type}</Text>
                     </Flex>
-                    <Flex gap='3'>
+                    <Flex gap='3' alignItems={'center'}>
                       <Text fontWeight={"medium"}>Case status:</Text>
                       <Text
+                      h='fit-content'
+                      borderRadius={'10'}
+                      py='1'
                         bg={
-                          status === "Solved"
+                        item.case_status === "Solved"
                             ? "green.300"
-                            : status === "Pending" && "yellow.300"
+                            : item.case_status === "Pending" && "yellow.300"
                         }
                         px='3'
                         color='white'>
-                        {item.status}
+                        {item.case_status}
                       </Text>
                     </Flex>
                     <Flex gap='3'>

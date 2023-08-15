@@ -11,27 +11,27 @@ export const PersonalInfo = ({ data }) => {
                     <SimpleGrid pt='5' columns={2} spacing={10} w='2xl'>
                         <Box>
                             <Text color={'#A5AEBB'} fontSize={'sm'}>First Name</Text>
-                            <Text fontWeight={'medium'}> </Text>
+                            <Text fontWeight={'medium'}>Samuel</Text>
                         </Box>
                         <Box>
                             <Text color={'#A5AEBB'} fontSize={'sm'}>Last Name</Text>
-                            <Text fontWeight={'medium'}> </Text>
+                            <Text fontWeight={'medium'}>Emmanuel</Text>
                         </Box>
                         <Box>
                             <Text color={'#A5AEBB'} fontSize={'sm'}>Email Address</Text>
-                            <Text fontWeight={'medium'}></Text>
+                            <Text fontWeight={'medium'}>emmanuelsamuel210@gmail.com</Text>
                         </Box>
                         <Box>
                             <Text color={'#A5AEBB'} fontSize={'sm'}>Phone</Text>
-                            <Text fontWeight={'medium'}></Text>
+                            <Text fontWeight={'medium'}>+234 810 890 4052</Text>
                         </Box>
                         <Box>
                             <Text color={'#A5AEBB'} fontSize={'sm'}>Bio</Text>
-                            <Text fontWeight={'medium'}></Text>
+                            <Text fontWeight={'medium'}>I am a big fan of portable</Text>
                         </Box>
                     </SimpleGrid>
                
-                <PersonalInformation />
+              
             </Flex>
         </Flex>
     )

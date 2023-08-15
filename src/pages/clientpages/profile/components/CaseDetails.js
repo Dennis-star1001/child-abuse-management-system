@@ -33,7 +33,7 @@ export const CaseDetails = () => {
                     </Box>
 
                 </SimpleGrid>
-                <Button>Edit</Button>
+              
             </Flex>
         </Flex>
     )

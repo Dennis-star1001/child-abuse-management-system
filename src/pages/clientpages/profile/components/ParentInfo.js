@@ -29,7 +29,7 @@ export const ParentInfo = () => {
                 <Text fontWeight={'medium'}>Student</Text>
             </Box>
         </SimpleGrid>
-       <ParentInformation/>
+      
     </Flex>
 </Flex>
   )

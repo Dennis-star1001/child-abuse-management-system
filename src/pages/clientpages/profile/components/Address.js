@@ -37,7 +37,7 @@ export const Address = ({data}) => {
                         </Box>
                     </SimpleGrid>
 }
-                <EditAddress />
+            
 
             </Flex>
         </Flex>

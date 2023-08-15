@@ -21,13 +21,17 @@ import { Link, useParams } from "react-router-dom";
 import { AiFillEdit } from "react-icons/ai";
 import { CaseDetails } from "./components/CaseDetails";
 
-export const ProfileOfChild = ({ loadChildren, children,cases }) => {
+export const ProfileOfChild = ({ loadChildren, children, cases }) => {
   let { id } = useParams();
   console.log("Params", children && children);
 
   const index = children.map((object) => object.id).indexOf(id);
+  const indez = cases.map((object) => object.email)
   console.log(index);
+  console.log(indez);
   const Data = children[index];
+  const CasesData = cases[index]
+  console.log(CasesData)
   //   const [dataValues, setDataValues] = useState(Data);
   //   const handleChange = (e) => {
   //     const { name, value } = e.target;
@@ -73,48 +77,10 @@ export const ProfileOfChild = ({ loadChildren, children,cases }) => {
 
           <ParentInfo loadChildren={loadChildren} data={Data} />
           <Address loadChildren={loadChildren} data={Data} />
-          <CaseDetails cases={cases}/>
+          <CaseDetails data={Data} cases={CasesData} />
         </>
       )}
-      {/* <TableContainer>
-                <Table size='sm'>
-                    <Thead>
-                        <Tr >
-                            <Th textAlign={'center'}>ID</Th>
-                            <Th textAlign={'center'}>Full Name</Th>
-
-                            <Th textAlign={'center'}>Gender</Th>
-                            <Th textAlign={'center'}>Case Category</Th>
-                            <Th textAlign={'center'}>Status</Th>
-                            <Th textAlign={'center'} >Email Address</Th>
-                            <Th textAlign={'center'}>Action</Th>
-
-                        </Tr>
-                    </Thead>
-                    <Tbody>
-                        <Tr>
-                            <Td textAlign={'center'}>#1</Td>
-                            <Td textAlign={'center'}>John Dav</Td>
-                            <Td textAlign={'center'}>Male</Td>
-                            <Td textAlign={'center'} >millimetres</Td>
-                            <Td><Text color='white' py='1' borderRadius={'2xl'} textAlign={'center'} bg='green'>Solved</Text></Td>
-
-                            <Td textAlign={'center'}>john@gmail.com</Td>
-                            <Td display={'flex'} gap={2} justifyContent="center" textAlign={'center'}>
-                                <Button>
-
-                                    <Link to='/admin/case' ><AiFillEye /></Link>
-                                </Button>
-                                <Button>
-                                    <AiFillEdit />
-                                </Button>
-                            </Td>
-
-
-                        </Tr>
-                    </Tbody>
-                </Table>
-            </TableContainer> */}
+     
     </Box>
   );
 };
