@@ -10,16 +10,19 @@ import "react-toastify/dist/ReactToastify.css";
 import ClientRoute from "./routes/ClientRoute";
 import TawkMessengerReact from '@tawk.to/tawk-messenger-react';
 import { useRef } from "react";
+import TawkToChat from "./components/TawkToChat";
 function App() {
- 
-  
+  const tawkMessengerRef = useRef();
+
+  const handleMinimize = () => {
+    tawkMessengerRef.current.minimize();
+  };
+
 
   return (
     <div>
-        
-      <TawkMessengerReact
-        propertyId="64dbe47acc26a871b02f7420"
-        widgetId="default" />
+
+      <TawkToChat />
       <Router>
         <ToastContainer />
         <Box>
