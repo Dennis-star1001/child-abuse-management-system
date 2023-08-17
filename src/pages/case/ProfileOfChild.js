@@ -21,17 +21,22 @@ import { Link, useParams } from "react-router-dom";
 import { AiFillEdit } from "react-icons/ai";
 import { CaseDetails } from "./components/CaseDetails";
 
-export const ProfileOfChild = ({ loadChildren, children, cases }) => {
+export const ProfileOfChild = ({
+  loadCases,
+  loadChildren,
+  children,
+  cases,
+}) => {
   let { id } = useParams();
   console.log("Params", children && children);
 
   const index = children.map((object) => object.id).indexOf(id);
-  const indez = cases.map((object) => object.email)
+  const indez = cases.map((object) => object.email);
   console.log(index);
   console.log(indez);
   const Data = children[index];
-  const CasesData = cases[index]
-  console.log(CasesData)
+  const CasesData = cases[index];
+  console.log(CasesData);
   //   const [dataValues, setDataValues] = useState(Data);
   //   const handleChange = (e) => {
   //     const { name, value } = e.target;
@@ -77,10 +82,9 @@ export const ProfileOfChild = ({ loadChildren, children, cases }) => {
 
           <ParentInfo loadChildren={loadChildren} data={Data} />
           <Address loadChildren={loadChildren} data={Data} />
-          <CaseDetails data={Data} cases={CasesData} />
+          <CaseDetails loadCases={loadCases} data={Data} cases={CasesData} />
         </>
       )}
-     
     </Box>
   );
 };

@@ -79,7 +79,11 @@ function AdminRoute() {
           <Route
             path='/children'
             element={
-              <ChildrenList loadChildren={loadChildren} cases={cases} children={children} />
+              <ChildrenList
+                loadChildren={loadChildren}
+                cases={cases}
+                children={children}
+              />
             }
           />
           <Route path='/' element={<Dashboard />} />
@@ -92,10 +96,15 @@ function AdminRoute() {
           <Route
             path='/child-profile/:id'
             element={
-              <ProfileOfChild loadChildren={loadChildren} cases={cases} children={children} />
+              <ProfileOfChild
+                loadCases={loadCases}
+                loadChildren={loadChildren}
+                cases={cases}
+                children={children}
+              />
             }
           />
-             <Route
+          <Route
             path='/case/child-case/:id'
             element={<ViewCase cases={cases} />}
           />
