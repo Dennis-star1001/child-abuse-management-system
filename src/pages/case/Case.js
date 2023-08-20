@@ -79,7 +79,7 @@ export const Case = ({ cases }) => {
                         bg={
                         item.case_status === "Solved"
                             ? "green.300"
-                            : item.case_status === "Pending" && "yellow.300"
+                            : item.case_status === "Pending"? "yellow.300":''
                         }
                         px='3'
                         color='white'>

@@ -106,7 +106,7 @@ function AdminRoute() {
           />
           <Route
             path='/case/child-case/:id'
-            element={<ViewCase cases={cases} />}
+            element={<ViewCase loadCases={loadCases} cases={cases} />}
           />
         </Routes>
       </Box>
