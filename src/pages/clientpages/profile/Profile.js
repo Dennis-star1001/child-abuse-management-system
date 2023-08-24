@@ -20,8 +20,9 @@ import { Address } from "./components/Address";
 import { Link, useParams } from "react-router-dom";
 import { AiFillEdit } from "react-icons/ai";
 import { CaseDetails } from "./components/CaseDetails";
+import { baseAvater } from "../../../constants";
 
-export const Profile = ({ loadChildren, children,cases }) => {
+export const Profile = ({ loadChildren, children, cases }) => {
   // console.log(children[0].firstname)
   let { id } = useParams();
   console.log("Params", children && children);
@@ -34,7 +35,7 @@ export const Profile = ({ loadChildren, children,cases }) => {
   //     const { name, value } = e.target;
   //     setDataValues((prevData) => ({ ...prevData, [name]: value }));
   //   };
-  //   console.log(dataValues, "values");
+  console.log(children[0], "values");
   return (
     <Box ml='64' px='5' class='mx-auto max-w-7xl  sm:px-6 lg:px-8'>
       <Text fontWeight={"medium"} px={"5"} py='2' fontSize={"20"}>
@@ -50,22 +51,22 @@ export const Profile = ({ loadChildren, children,cases }) => {
             gap='5'
             p='7'>
             <WrapItem>
-              <Avatar
-                size={"xl"}
-                name='Dan Abrahmov'
-                src='https://bit.ly/dan-abramov'
+              <img
+                src={`/ ${children[0].img_name}`}
+                className='h-28 w-28 rounded-full'
+                alt='profile'
               />
             </WrapItem>
             {/* {data && data.map((index, data) => ( */}
             <Box w='full' bg='white'>
               <Text fontSize={"lg"} fontWeight={"medium"}>
-                {children[0].firstname} 
+                {children[0].firstname}
               </Text>
               <Text color={"#A5AEBB"} fontSize={"sm"}>
                 {children[0].email}
               </Text>
               <Text color={"#A5AEBB"} fontSize={"sm"}>
-                {children[0].phone}
+                x{children[0].phone}
               </Text>
             </Box>
             {/* ))} */}
@@ -74,7 +75,6 @@ export const Profile = ({ loadChildren, children,cases }) => {
 
           <ParentInfo loadChildren={loadChildren} data={children[0]} />
           <Address loadChildren={loadChildren} data={children[0]} />
-          
         </>
       )}
       {/* <TableContainer>

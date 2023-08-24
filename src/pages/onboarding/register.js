@@ -45,9 +45,35 @@ export default function Registration() {
     home_address: "",
     gurdian_address: "",
     school_address: "",
-    bio: ""
+    bio: "",
   });
-  const { firstname, lastname, address, email, gender, password, age, phone, bio, country, citystate, postal_code, home_address, gurdian_address, school_address, gurdian_first_name, gurdian_last_name, gurdian_email, gurdian_phone} = data;
+  const [image, setImage] = useState(null);
+
+  const handleImageChange = (e) => {
+    setImage(e.target.files[0]);
+  };
+
+  const {
+    firstname,
+    lastname,
+    address,
+    email,
+    gender,
+    password,
+    age,
+    phone,
+    bio,
+    country,
+    citystate,
+    postal_code,
+    home_address,
+    gurdian_address,
+    school_address,
+    gurdian_first_name,
+    gurdian_last_name,
+    gurdian_email,
+    gurdian_phone,
+  } = data;
   const handleChange = (e) => {
     const { name, value } = e.target;
     setData((prevData) => ({ ...prevData, [name]: value }));
@@ -76,6 +102,8 @@ export default function Registration() {
     formData.append("gurdian_email", gurdian_email);
     formData.append("gurdian_phone", gurdian_phone);
     formData.append("school_address", school_address);
+    formData.append("image", image);
+    formData.append("imageName", image.name);
 
     // toast(JSON.stringify(data));
     if (password !== conPass) {
@@ -115,35 +143,42 @@ export default function Registration() {
           maxW={"4xl"}
           bg={useColorModeValue("white", "gray.700")}
           rounded={"xl"}
-         
           p={6}
           my={12}>
           <Heading lineHeight={1.1} fontSize={{ base: "2xl", sm: "3xl" }}>
             Register
           </Heading>
-        
-          <SimpleGrid alignItems={'center'} columns={{base:'1',md:2}} spacing={10}>
-          <FormControl>
-            <FormLabel>User Icon</FormLabel>
-            <Stack direction={["column", "row"]} spacing={6}>
-              <Center>
-                <Avatar size='xl' src='https://bit.ly/sage-adebayo'>
-                  <AvatarBadge
-                    as={IconButton}
-                    size='sm'
-                    rounded='full'
-                    top='-10px'
-                    colorScheme='red'
-                    aria-label='remove Image'
-                    icon={<SmallCloseIcon />}
-                  />
-                </Avatar>
-              </Center>
-              <Center w='full'>
-                <Button w='full'>Change Icon</Button>
-              </Center>
-            </Stack>
-          </FormControl>
+
+          <SimpleGrid
+            alignItems={"center"}
+            columns={{ base: "1", md: 2 }}
+            spacing={10}>
+            <FormControl>
+              <FormLabel>User Icon</FormLabel>
+              <Stack direction={["column", "row"]} spacing={6}>
+                <Center>
+                  <Avatar size='xl' src='https://bit.ly/sage-adebayo'>
+                    <AvatarBadge
+                      as={IconButton}
+                      size='sm'
+                      rounded='full'
+                      top='-10px'
+                      colorScheme='red'
+                      aria-label='remove Image'
+                      icon={<SmallCloseIcon />}
+                    />
+                  </Avatar>
+                </Center>
+                <input
+                  type='file'
+                  accept='image/*'
+                  onChange={handleImageChange}
+                />
+                <Center w='full'>
+                  <Button w='full'>Change Icon</Button>
+                </Center>
+              </Stack>
+            </FormControl>
             <FormControl isRequired>
               <FormLabel>First name</FormLabel>
               <Input
@@ -176,6 +211,7 @@ export default function Registration() {
                 onChange={handleChange}
                 value={email}
               />
+              <FormControl></FormControl>
             </FormControl>
             <FormControl isRequired>
               <FormLabel>Gender</FormLabel>
@@ -212,7 +248,7 @@ export default function Registration() {
               <Input
                 placeholder='Phone'
                 _placeholder={{ color: "gray.500" }}
-                type="number"
+                type='number'
                 name='phone'
                 onChange={handleChange}
                 value={phone}
@@ -268,7 +304,7 @@ export default function Registration() {
                 value={gurdian_phone}
               />
             </FormControl>
-            
+
             <FormControl isRequired>
               <FormLabel>City/State</FormLabel>
               <Input
@@ -327,7 +363,6 @@ export default function Registration() {
                 name='gurdian_address'
                 onChange={handleChange}
                 value={gurdian_address}
-
               />
             </FormControl>
             <FormControl isRequired>
@@ -362,11 +397,13 @@ export default function Registration() {
                 value={conPass}
               />
             </FormControl>
-
           </SimpleGrid>
-          <Stack pt='10' spacing={6} justifyContent={'center'} direction={["column", "row"]}>
+          <Stack
+            pt='10'
+            spacing={6}
+            justifyContent={"center"}
+            direction={["column", "row"]}>
             <button
-            
               type='submit'
               className='flex px-14 w-fit-content justify-center rounded-md bg-[#696BC2] px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'>
               Cancel
